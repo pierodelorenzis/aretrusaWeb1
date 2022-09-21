@@ -1,29 +1,31 @@
 package com.example.aretrusaWeb1.model;
 
 
+import org.bson.types.ObjectId;
+
 public class BookCase {
 
-    private int bookcase;
-    private int idAisle;
+    private ObjectId bookcase;
+    private ObjectId idAisle;
 
-    public BookCase(int bookcase, int idAisle) {
+        public BookCase(ObjectId bookcase, ObjectId idAisle) {
         this.bookcase = bookcase;
         this.idAisle = idAisle;
     }
 
-    public int getBookcase() {
+    public ObjectId getBookcase() {
         return bookcase;
     }
 
-    public int getIdAisle() {
+    public ObjectId getIdAisle() {
         return idAisle;
     }
 
-    public void setBookcase(int bookcase) {
+    public void setBookcase(ObjectId bookcase) {
         this.bookcase = bookcase;
     }
 
-    public void setIdAisle(int idAisle) {
+    public void setIdAisle(ObjectId idAisle) {
         this.idAisle = idAisle;
     }
 }

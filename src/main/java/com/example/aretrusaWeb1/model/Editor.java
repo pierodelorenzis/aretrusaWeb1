@@ -1,15 +1,17 @@
 package com.example.aretrusaWeb1.model;
 
 
+import org.bson.types.ObjectId;
+
 public class Editor {
 
-    private int idEditor;
+    private ObjectId idEditor;
     private String name;
     private String city;
     private String address;
     private String telephone;
 
-    public Editor(int idEditor, String name, String city, String address, String telephone){
+    public Editor(ObjectId idEditor, String name, String city, String address, String telephone){
         this.idEditor = idEditor;
         this.name = name;
         this.city = city;
@@ -17,11 +19,11 @@ public class Editor {
         this.telephone = telephone;
     }
 
-    public int getIdEditor() {
+    public ObjectId getIdEditor() {
         return idEditor;
     }
 
-    public void setIdEditor(int idEditor) {
+    public void setIdEditor(ObjectId idEditor) {
         this.idEditor = idEditor;
     }
 

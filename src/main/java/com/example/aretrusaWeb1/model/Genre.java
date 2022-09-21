@@ -1,12 +1,15 @@
 package com.example.aretrusaWeb1.model;
 
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 
 public class Genre {
-    private Integer id;
+    @Id
+    private ObjectId id;
     private String name;
 
-    public Genre(Integer id, String name) {
+    public Genre(ObjectId id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -15,11 +18,11 @@ public class Genre {
 
     }
 
-    public Integer getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

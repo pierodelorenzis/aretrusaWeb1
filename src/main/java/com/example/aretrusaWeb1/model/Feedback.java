@@ -1,19 +1,21 @@
 package com.example.aretrusaWeb1.model;
 
+import org.bson.types.ObjectId;
+
 public class Feedback {
-    private int idFeedback;
+    private ObjectId idFeedback;
     private int feedback;
     private int idBook;
-    private int idBorrow;
+    private ObjectId idBorrow;
 
-    public Feedback(int idFeedback, int feedback, int idBook, int idBorrow) {
+    public Feedback(ObjectId idFeedback, int feedback, int idBook, ObjectId idBorrow) {
         this.idFeedback = idFeedback;
         this.feedback = feedback;
         this.idBook = idBook;
         this.idBorrow = idBorrow;
     }
 
-    public int getIdFeedback() {
+    public ObjectId getIdFeedback() {
         return idFeedback;
     }
 
@@ -25,11 +27,11 @@ public class Feedback {
         return idBook;
     }
 
-    public int getIdBorrow() {
+    public ObjectId getIdBorrow() {
         return idBorrow;
     }
 
-    public void setIdFeedback(int idFeedback) {
+    public void setIdFeedback(ObjectId idFeedback) {
         this.idFeedback = idFeedback;
     }
 
@@ -41,7 +43,7 @@ public class Feedback {
         this.idBook = idBook;
     }
 
-    public void setIdBorrow(int idBorrow) {
+    public void setIdBorrow(ObjectId idBorrow) {
         this.idBorrow = idBorrow;
     }
 }

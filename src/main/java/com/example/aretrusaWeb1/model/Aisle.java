@@ -1,21 +1,24 @@
 package com.example.aretrusaWeb1.model;
 
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 
 public class Aisle {
 
-    private int aisle;
+    @Id
+    private ObjectId aisle;
 
 
-    public Aisle(int aisle) {
+    public Aisle(ObjectId aisle) {
         this.aisle = aisle;
     }
 
-    public int getAisle() {
+    public ObjectId getAisle() {
         return aisle;
     }
 
-    public void setAisle(int aisle) {
+    public void setAisle(ObjectId aisle) {
         this.aisle = aisle;
     }
 }

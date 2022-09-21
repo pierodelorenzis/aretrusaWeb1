@@ -1,10 +1,14 @@
 package com.example.aretrusaWeb1.model;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+
 import java.util.Date;
 
 public class Borrow {
 
-    private int idBorrow;
+    @Id
+    private ObjectId idBorrow;
 
     private Date startDate;
     private Date endDate;
@@ -13,7 +17,7 @@ public class Borrow {
     private int idCustomer;
     private int idFeedback;
 
-    public Borrow(int idBorrow, Date startDate, Date endDate, Date startReservation, Date endReservation, int idCustomer, int idFeedback) {
+    public Borrow(ObjectId idBorrow, Date startDate, Date endDate, Date startReservation, Date endReservation, int idCustomer, int idFeedback) {
         this.idBorrow = idBorrow;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -23,11 +27,11 @@ public class Borrow {
         this.idFeedback = idFeedback;
     }
 
-    public int getIdBorrow() {
+    public ObjectId getIdBorrow() {
         return idBorrow;
     }
 
-    public void setIdBorrow(int idBorrow) {
+    public void setIdBorrow(ObjectId idBorrow) {
         this.idBorrow = idBorrow;
     }
 

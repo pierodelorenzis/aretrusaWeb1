@@ -2,13 +2,19 @@ package com.example.aretrusaWeb1.model;
 
 
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+
 import java.util.Date;
 
 public class User {
 
+    @Indexed(unique = true)
     private String email;
     private String username;
     private String password;
+    @Id
+    @Indexed(unique = true)
     private String cf;
     private String name;
     private String surname;

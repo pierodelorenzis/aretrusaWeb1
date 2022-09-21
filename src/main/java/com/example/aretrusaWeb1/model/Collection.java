@@ -1,11 +1,14 @@
 package com.example.aretrusaWeb1.model;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Date;
 
 
 
 public class Collection {
 
+    @Id
     private String id;
     private String name;
     private Date startYear;

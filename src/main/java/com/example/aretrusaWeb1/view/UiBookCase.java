@@ -1,10 +1,11 @@
 package com.example.aretrusaWeb1.view;
 
 import com.example.aretrusaWeb1.model.BookCase;
+import org.bson.types.ObjectId;
 
 public class UiBookCase {
 
-    public int bookcase;
+    public ObjectId bookcase;
 
     public UiBookCase(BookCase bookCase) {
         this.bookcase = bookCase.getBookcase();
@@ -13,7 +14,7 @@ public class UiBookCase {
     public UiBookCase() {
     }
 
-    public int getBookcase() {
+    public ObjectId getBookcase() {
         return bookcase;
     }
 
