@@ -1,6 +1,8 @@
 package com.example.aretrusaWeb1.service;
 
+import com.example.aretrusaWeb1.model.Editor;
 import com.example.aretrusaWeb1.model.Genre;
+import com.example.aretrusaWeb1.repository.EditorRepository;
 import com.example.aretrusaWeb1.repository.GenreRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,20 +12,20 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BookService {
+public class EditorService {
 
     @Autowired
-    private GenreRepository genreRepository;
+    private EditorRepository editorRepository;
 
-    //Trova tutti i Generi
-    public List<Genre> findAll() {
-        return this.genreRepository.findAll();
+    //Trova tutti gli editori
+    public List<Editor> findAll() {
+        return this.editorRepository.findAll();
     }
 
-    //Trova i Generi per ID
-    public Optional<Genre> findById(ObjectId id) {
-        Optional<Genre> foundGenre = this.genreRepository.findById(id);
-        return foundGenre.isEmpty() ? Optional.empty() : foundGenre;
+    //Trova gli editori per ID
+    public Optional<Editor> findById(ObjectId id) {
+        Optional<Editor> foundEditor = this.editorRepository.findById(id);
+        return foundEditor.isEmpty() ? Optional.empty() : foundEditor;
     }
 
 
@@ -53,3 +55,4 @@ public class BookService {
     }
 */
 }
+
