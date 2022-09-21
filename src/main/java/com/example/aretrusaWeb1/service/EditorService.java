@@ -1,9 +1,7 @@
 package com.example.aretrusaWeb1.service;
 
 import com.example.aretrusaWeb1.model.Editor;
-import com.example.aretrusaWeb1.model.Genre;
 import com.example.aretrusaWeb1.repository.EditorRepository;
-import com.example.aretrusaWeb1.repository.GenreRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
