@@ -6,14 +6,15 @@ import com.example.aretrusaWeb1.view.UiUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
+
 @Component
 public class UserFacade {
 
     @Autowired
     UserService userService;
 
-    public UiUser createFakeUser()
-    {
+    public UiUser createFakeUser() throws ParseException {
         User fakeUser = userService.getFakeUser();
         return new UiUser(fakeUser);
     }
