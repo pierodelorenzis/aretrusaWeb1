@@ -21,6 +21,9 @@ public class Author {
         this.lastName = lastName;
     }
 
+    public Author() {
+    }
+
     public ObjectId getIdAuthor() {
         return idAuthor;
     }

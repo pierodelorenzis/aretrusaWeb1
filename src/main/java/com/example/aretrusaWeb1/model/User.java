@@ -45,6 +45,11 @@ public class User {
 
     }
 
+    public User(String cf, String name, String surname) {
+        this.cf = cf;
+        this.name = name;
+        this.surname = surname;
+    }
 
     public String getEmail() {
         return email;

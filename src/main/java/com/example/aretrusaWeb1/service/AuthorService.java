@@ -31,9 +31,16 @@ public class AuthorService {
 
 
     //aggiunge un nuovo autore
-    public ResponseEntity save(Author newAuthor) {
-        this.authorRepository.save(newAuthor);
-        return ResponseEntity.status(201).body(newAuthor);
+    public Author createAuthor(String name, String lastName){
+        Author toCreate = new Author();
+        toCreate.setName(name.trim());
+        toCreate.setLastName(lastName.trim());
+        try {
+            this.authorRepository.save(toCreate);
+        }catch (Exception e){
+            return null;
+        }
+        return toCreate;
     }
 
     //Elimina un autore
@@ -42,7 +49,7 @@ public class AuthorService {
     }
 
     //Sostituisce un autore
-    public Author substituteAuthor(ObjectId id, Author newAuthor) {
+    public Author editAuthor(ObjectId id, Author newAuthor) {
         return authorRepository.findById(id)
                 .map(author -> {
                     author.setName(newAuthor.getName());
