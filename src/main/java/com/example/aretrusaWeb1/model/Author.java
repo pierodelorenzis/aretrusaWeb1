@@ -1,22 +1,31 @@
 package com.example.aretrusaWeb1.model;
 
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+
 public class Author {
-    private int idAuthor;
+    @Id
+    private ObjectId idAuthor;
     private String name;
     private String lastName;
 
-    public Author(int idAuthor, String name, String lastName){
+    public Author(ObjectId idAuthor, String name, String lastName){
         this.idAuthor = idAuthor;
         this.name = name;
         this.lastName = lastName;
     }
 
-    public int getIdAuthor() {
+    public Author(String name, String lastName){
+        this.name = name;
+        this.lastName = lastName;
+    }
+
+    public ObjectId getIdAuthor() {
         return idAuthor;
     }
 
-    public void setIdAuthor(int idAuthor) {
+    public void setIdAuthor(ObjectId idAuthor) {
         this.idAuthor = idAuthor;
     }
 
