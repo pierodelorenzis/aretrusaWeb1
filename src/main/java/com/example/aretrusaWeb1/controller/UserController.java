@@ -20,4 +20,5 @@ public class UserController {
     UiUser getUser() throws ParseException {
         return userFacade.createFakeUser();
     }
+
 }
