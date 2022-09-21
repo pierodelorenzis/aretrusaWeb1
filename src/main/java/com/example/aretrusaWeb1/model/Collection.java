@@ -1,5 +1,6 @@
 package com.example.aretrusaWeb1.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
@@ -9,13 +10,13 @@ import java.util.Date;
 public class Collection {
 
     @Id
-    private String id;
+    private ObjectId id;
     private String name;
     private Date startYear;
     private Date endYear;
     private Integer numBooks;
 
-    public Collection(String id, String name, Date startYear, Date endYear, Integer numBooks) {
+    public Collection(ObjectId id, String name, Date startYear, Date endYear, Integer numBooks) {
         this.id = id;
         this.name = name;
         this.startYear = startYear;
@@ -24,11 +25,11 @@ public class Collection {
     }
 
 
-       public String getId() {
+       public ObjectId getId() {
            return id;
        }
 
-       public void setId(String id) {
+       public void setId(ObjectId id) {
            this.id = id;
        }
 
