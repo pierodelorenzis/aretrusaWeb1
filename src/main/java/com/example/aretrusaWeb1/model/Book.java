@@ -1,7 +1,12 @@
 package com.example.aretrusaWeb1.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+
 public class Book {
 
+    @Id
+    @Indexed(unique = true)
     private String isbn;
     private String name;
     private int quantity;
