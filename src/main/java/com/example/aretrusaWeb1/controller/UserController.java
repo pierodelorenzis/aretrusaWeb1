@@ -1,8 +1,11 @@
 package com.example.aretrusaWeb1.controller;
 
 import com.example.aretrusaWeb1.facade.UserFacade;
+import com.example.aretrusaWeb1.model.Customer;
 import com.example.aretrusaWeb1.model.User;
+import com.example.aretrusaWeb1.view.UiCustomer;
 import com.example.aretrusaWeb1.view.UiUser;
+import com.example.aretrusaWeb1.view.networkUi.BasicResponse;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,14 +33,16 @@ public class UserController {
 
     //Mostra UiUser per ID inserito
     @GetMapping({"/find/{id}"})
-    public ResponseEntity<UiUser> read(@PathVariable("id") ObjectId id) {
-        return userFacade.findById(id);
+    public BasicResponse<UiUser> read(@PathVariable("id") ObjectId id) {
+        BasicResponse<UiUser> uiUserBasicResponse = new BasicResponse<UiUser>(0, "ok", userFacade.findById(id).getBody());
+        return uiUserBasicResponse;
     }
 
     //Aggiungi nuovo user ricevendo un JSON
     @PostMapping({"/newUser"})
-    public ResponseEntity<User> newUser (@RequestBody User newUser) {
-        return this.userFacade.save(newUser);
+    public BasicResponse<UiUser> newUser(@RequestBody User newUser) {
+        BasicResponse<UiUser> uiUserBasicResponse = new BasicResponse<UiUser>(0, "ok", (UiUser) userFacade.save(newUser).getBody());
+        return uiUserBasicResponse;
     }
 
     //Elimina uno user per ID inserito
