@@ -30,30 +30,35 @@ public class GenreService {
     }
 
 
-    /*aggiunge un nuovo autore
-    public ResponseEntity save(Author newAuthor) {
-        this.authorRepository.save(newAuthor);
-        return ResponseEntity.status(201).body(newAuthor);
+    //aggiunge un nuovo Genere
+    public Genre createGenre(String name) {
+        Genre toCreate = new Genre();
+        toCreate.setName(name.trim());
+        try {
+            this.genreRepository.save(toCreate);
+        }catch (Exception e){
+            return null;
+        }
+        return toCreate;
     }
 
-    //Elimina un autore
+    //Elimina un Genere
     public void deleteById(ObjectId id) {
-        authorRepository.deleteById(id);
+        genreRepository.deleteById(id);
     }
 
-    //Sostituisce un autore
-    public Author substituteAuthor(ObjectId id, Author newAuthor) {
-        return authorRepository.findById(id)
-                .map(author -> {
-                    author.setName(newAuthor.getName());
-                    author.setLastName(newAuthor.getLastName());
-                    return authorRepository.save(author);
+    //Modifica un genere
+    public Genre editGenre(ObjectId id, Genre newGenre) {
+        return genreRepository.findById(id)
+                .map(genre -> {
+                    genre.setName(newGenre.getName());
+                    return genreRepository.save(genre);
                 })
                 .orElseGet(() -> {
-                    newAuthor.setIdAuthor(id);
-                    return authorRepository.save(newAuthor);
+                    newGenre.setId(id);
+                    return genreRepository.save(newGenre);
                 });
     }
-*/
+
 }
 

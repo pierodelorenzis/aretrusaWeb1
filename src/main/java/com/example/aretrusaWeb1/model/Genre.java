@@ -9,8 +9,7 @@ public class Genre {
     private ObjectId id;
     private String name;
 
-    public Genre(ObjectId id, String name) {
-        this.id = id;
+    public Genre(String name) {
         this.name = name;
     }
 

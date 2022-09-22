@@ -11,4 +11,11 @@ public class FacadeBuilder {
         return new AuthorFacade();
     }
 
+    @Bean
+    public EditorFacade provideEditorFacade() { return new EditorFacade();}
+
+    @Bean
+    public GenreFacade provideGenreFacade(){return new GenreFacade();}
+
+
 }
