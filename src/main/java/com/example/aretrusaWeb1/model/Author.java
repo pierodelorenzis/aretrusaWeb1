@@ -24,6 +24,9 @@ public class Author {
     public Author() {
     }
 
+    public Author(Author author) {
+    }
+
     public ObjectId getIdAuthor() {
         return idAuthor;
     }

@@ -27,25 +27,25 @@ public class UserController {
         return this.userFacade.findAll();
     }
 
-    //Mostra UiAutore per ID inserito
+    //Mostra UiUser per ID inserito
     @GetMapping({"/find/{cf}"})
     public ResponseEntity<UiUser> read(@PathVariable("cf") String cf) {
         return userFacade.findById(cf);
     }
 
-    //Aggiungi nuovo autore ricevendo un JSON
+    //Aggiungi nuovo user ricevendo un JSON
     @PostMapping({"/newUser"})
     public ResponseEntity<User> newUser (@RequestBody User newUser) {
         return this.userFacade.save(newUser);
     }
 
-    //Elimina un autore per ID inserito
+    //Elimina uno user per ID inserito
     @DeleteMapping("/delete/{cf}")
     void deleteUser(@PathVariable("cf") String cf) {
         userFacade.deleteById(cf);
     }
 
-    //Sostituisce Autore per ID inserito e ricevendo un JSON
+    //Sostituisce User per ID inserito e ricevendo un JSON
     @PutMapping("/substitute/{cf}")
     User editUser (@RequestBody User newUser, @PathVariable("cf") String cf) {
         return userFacade.editUser(cf, newUser);

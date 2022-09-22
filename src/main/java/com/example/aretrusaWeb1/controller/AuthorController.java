@@ -41,7 +41,7 @@ public class AuthorController {
     }
 
     //Sostituisce Autore per ID inserito e ricevendo un JSON
-    @PutMapping("/substitute/{id}")
+    @PutMapping("/edit/{id}")
     Author editAuthor (@RequestBody Author newAuthor, @PathVariable ObjectId id) {
         return authorFacade.editAuthor(id, newAuthor);
     }
