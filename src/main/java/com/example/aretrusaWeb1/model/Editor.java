@@ -11,12 +11,14 @@ public class Editor {
     private String address;
     private String telephone;
 
-    public Editor(ObjectId idEditor, String name, String city, String address, String telephone){
-        this.idEditor = idEditor;
+    public Editor(String name, String city, String address, String telephone){
         this.name = name;
         this.city = city;
         this.address = address;
         this.telephone = telephone;
+    }
+
+    public Editor() {
     }
 
     public ObjectId getIdEditor() {

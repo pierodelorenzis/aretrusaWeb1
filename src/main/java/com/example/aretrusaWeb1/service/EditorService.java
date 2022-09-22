@@ -1,11 +1,11 @@
 package com.example.aretrusaWeb1.service;
 
+
 import com.example.aretrusaWeb1.model.Editor;
 import com.example.aretrusaWeb1.repository.EditorRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -27,30 +27,38 @@ public class EditorService {
     }
 
 
-    /*aggiunge un nuovo autore
-    public ResponseEntity save(Author newAuthor) {
-        this.authorRepository.save(newAuthor);
-        return ResponseEntity.status(201).body(newAuthor);
+    public Editor createEditor(String name,String city,String address,String telephone) {
+        Editor toCreate = new Editor();
+        toCreate.setName(name.trim());
+        toCreate.setCity(city.trim());
+        toCreate.setAddress(address.trim());
+        toCreate.setTelephone(telephone.trim());
+        try {
+            this.editorRepository.save(toCreate);
+        }catch (Exception e){
+            return null;
+        }
+        return toCreate;
     }
 
-    //Elimina un autore
+    //Elimina un editore
     public void deleteById(ObjectId id) {
-        authorRepository.deleteById(id);
+        editorRepository.deleteById(id);
     }
-
-    //Sostituisce un autore
-    public Author substituteAuthor(ObjectId id, Author newAuthor) {
-        return authorRepository.findById(id)
-                .map(author -> {
-                    author.setName(newAuthor.getName());
-                    author.setLastName(newAuthor.getLastName());
-                    return authorRepository.save(author);
+    //Sostituisce un editore
+    public Editor editEditor(ObjectId id, Editor newEditor) {
+        return editorRepository.findById(id)
+                .map(editor -> {
+                    editor.setName(newEditor.getName());
+                    editor.setCity(newEditor.getCity());
+                    editor.setAddress(newEditor.getAddress());
+                    editor.setTelephone(newEditor.getTelephone());
+                    return newEditor;
                 })
                 .orElseGet(() -> {
-                    newAuthor.setIdAuthor(id);
-                    return authorRepository.save(newAuthor);
+                    newEditor.setIdEditor(id);
+                    return editorRepository.save(newEditor);
                 });
     }
-*/
 }
 
