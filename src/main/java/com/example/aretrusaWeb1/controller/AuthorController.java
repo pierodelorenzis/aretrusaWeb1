@@ -45,7 +45,10 @@ public class AuthorController {
     Author editAuthor (@RequestBody Author newAuthor, @PathVariable ObjectId id) {
         return authorFacade.editAuthor(id, newAuthor);
     }
-
+    @GetMapping({"/find/{lastname}"})
+    public ResponseEntity<List<UiAuthor>> read(@PathVariable("lastname") String lastname) {
+        return authorFacade.findByLastname(lastname);
+    }
 
 }
 

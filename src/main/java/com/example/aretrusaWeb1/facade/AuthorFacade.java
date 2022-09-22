@@ -46,6 +46,15 @@ public class AuthorFacade {
     public Author editAuthor(ObjectId id, Author newAuthor){
         return authorService.editAuthor(id, newAuthor);
     }
+    public ResponseEntity<List<UiAuthor>> findByLastname(String lastname) {
+        final List<Author> bylastname = authorService.findByLastname(lastname);
+        if (bylastname.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(bylastname.stream().map(UiAuthor::new).collect(Collectors.toList()));
+        }
+    }
+
 
 }
 

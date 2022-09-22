@@ -63,5 +63,10 @@ public class AuthorService {
                 });
     }
 
+    public List<Author> findByLastname(String lastname) {
+        return authorRepository.findAll().stream().filter(author -> author.getLastName().equals(lastname)).map(Author::new).collect(Collectors.toList());
+    }
+
+
 }
 
