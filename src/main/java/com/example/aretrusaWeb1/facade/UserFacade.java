@@ -3,6 +3,7 @@ package com.example.aretrusaWeb1.facade;
 import com.example.aretrusaWeb1.model.User;
 import com.example.aretrusaWeb1.service.UserService;
 import com.example.aretrusaWeb1.view.UiUser;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -30,8 +31,8 @@ public class UserFacade {
     }
 
     //Trova gli UiUser per ID
-    public ResponseEntity<UiUser> findById(String cf) {
-        final Optional<User> byId = userService.findById(cf);
+    public ResponseEntity<UiUser> findById(ObjectId id) {
+        final Optional<User> byId = userService.findById(id);
         if (byId.isPresent()){
             return ResponseEntity.ok(new UiUser(byId.get()));
         } else {
@@ -41,16 +42,16 @@ public class UserFacade {
 
     //aggiunge un nuovo user
     public ResponseEntity save(User newUser) {
-        return ResponseEntity.ok(userService.createUser(newUser.getCf(), newUser.getName(), newUser.getSurname()));
+        return ResponseEntity.ok(userService.createUser(newUser.getId(), newUser.getName(), newUser.getSurname()));
     }
 
     //Elimina uno user per ID
-    public void deleteById(String cf) {
-        userService.deleteById(cf);
+    public void deleteById(ObjectId id) {
+        userService.deleteById(id);
     }
 
     //Sostituisce uno user
-    public User editUser(String cf, User newUser){
-        return userService.editUser(cf, newUser);
+    public User editUser(ObjectId id, User newUser){
+        return userService.editUser(id, newUser);
     }
 }

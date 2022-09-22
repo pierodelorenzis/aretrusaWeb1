@@ -11,4 +11,14 @@ public class FacadeBuilder {
         return new AuthorFacade();
     }
 
+    @Bean
+    public CollectionFacade provideCollectionFacade(){
+        return new CollectionFacade();
+    }
+
+    @Bean
+    public CustomerFacade provideCustomerFacade(){
+        return new CustomerFacade();
+    }
+
 }

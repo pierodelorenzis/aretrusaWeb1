@@ -2,6 +2,7 @@ package com.example.aretrusaWeb1.model;
 
 
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 
@@ -9,11 +10,12 @@ import java.util.Date;
 
 public class User {
 
+    @Id
+    private ObjectId id;
     @Indexed(unique = true)
     private String email;
     private String username;
     private String password;
-    @Id
     @Indexed(unique = true)
     private String cf;
     private String name;
@@ -49,6 +51,14 @@ public class User {
         this.cf = cf;
         this.name = name;
         this.surname = surname;
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public String getEmail() {

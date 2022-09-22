@@ -19,6 +19,11 @@ public class Customer extends User{
         this.evaluation = evaluation;
     }
 
+    public Customer(){}
+
+    public Customer(Customer customer) {
+    }
+
     public float getBalance() {
         return balance;
     }

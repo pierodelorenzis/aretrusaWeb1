@@ -3,6 +3,7 @@ package com.example.aretrusaWeb1.controller;
 import com.example.aretrusaWeb1.facade.UserFacade;
 import com.example.aretrusaWeb1.model.User;
 import com.example.aretrusaWeb1.view.UiUser;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,9 +29,9 @@ public class UserController {
     }
 
     //Mostra UiUser per ID inserito
-    @GetMapping({"/find/{cf}"})
-    public ResponseEntity<UiUser> read(@PathVariable("cf") String cf) {
-        return userFacade.findById(cf);
+    @GetMapping({"/find/{id}"})
+    public ResponseEntity<UiUser> read(@PathVariable("id") ObjectId id) {
+        return userFacade.findById(id);
     }
 
     //Aggiungi nuovo user ricevendo un JSON
@@ -40,15 +41,15 @@ public class UserController {
     }
 
     //Elimina uno user per ID inserito
-    @DeleteMapping("/delete/{cf}")
-    void deleteUser(@PathVariable("cf") String cf) {
-        userFacade.deleteById(cf);
+    @DeleteMapping("/delete/{id}")
+    void deleteUser(@PathVariable("id") ObjectId id) {
+        userFacade.deleteById(id);
     }
 
     //Sostituisce User per ID inserito e ricevendo un JSON
-    @PutMapping("/edit/{cf}")
-    User editUser (@RequestBody User newUser, @PathVariable("cf") String cf) {
-        return userFacade.editUser(cf, newUser);
+    @PutMapping("/edit/{id}")
+    User editUser (@RequestBody User newUser, @PathVariable("id") ObjectId id) {
+        return userFacade.editUser(id, newUser);
     }
 
 }

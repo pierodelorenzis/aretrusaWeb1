@@ -32,16 +32,16 @@ public class UserService {
     }
 
     //Trova gli user per ID
-    public Optional<User> findById(String cf) {
-        Optional<User> foundUser = this.userRepository.findById(cf);
+    public Optional<User> findById(ObjectId id) {
+        Optional<User> foundUser = this.userRepository.findById(id);
         return foundUser.isEmpty() ? Optional.empty() : foundUser;
     }
 
 
     //aggiunge un nuovo user
-    public User createUser(String cf, String name, String lastName){
+    public User createUser(ObjectId id, String name, String lastName){
         User toCreate = new User();
-        toCreate.setCf(cf.trim());
+        toCreate.setId(id);
         toCreate.setName(name.trim());
         toCreate.setSurname(lastName.trim());
         try {
@@ -53,20 +53,20 @@ public class UserService {
     }
 
     //Elimina uno user
-    public void deleteById(String cf) {
-        userRepository.deleteById(cf);
+    public void deleteById(ObjectId id) {
+        userRepository.deleteById(id);
     }
 
     //Modifica uno user
-    public User editUser(String cf, User newUser) {
-        return userRepository.findById(cf)
+    public User editUser(ObjectId id, User newUser) {
+        return userRepository.findById(id)
                 .map(author -> {
                     author.setName(newUser.getName());
                     author.setSurname(newUser.getSurname());
                     return userRepository.save(author);
                 })
                 .orElseGet(() -> {
-                    newUser.setCf(cf);
+                    newUser.setId(id);
                     return userRepository.save(newUser);
                 });
     }

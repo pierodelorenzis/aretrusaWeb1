@@ -16,7 +16,7 @@ public class Collection {
     private Date endYear;
     private Integer numBooks;
 
-    public Collection(ObjectId id, String name, Date startYear, Date endYear, Integer numBooks) {
+    public Collection() {
         this.id = id;
         this.name = name;
         this.startYear = startYear;
