@@ -3,18 +3,14 @@ package com.example.aretrusaWeb1.model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Author {
     @Id
     private ObjectId idAuthor;
     private String name;
     private String lastName;
-
-    public Author(ObjectId idAuthor, String name, String lastName){
-        this.idAuthor = idAuthor;
-        this.name = name;
-        this.lastName = lastName;
-    }
 
     public Author(String name, String lastName){
         this.name = name;

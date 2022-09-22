@@ -3,6 +3,7 @@ package com.example.aretrusaWeb1.controller;
 import com.example.aretrusaWeb1.facade.AuthorFacade;
 import com.example.aretrusaWeb1.model.Author;
 import com.example.aretrusaWeb1.view.UiAuthor;
+import com.example.aretrusaWeb1.view.networkUi.BasicResponse;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +25,9 @@ public class AuthorController {
 
     //Mostra UiAutore per ID inserito
     @GetMapping({"/find/{id}"})
-    public ResponseEntity<UiAuthor> read(@PathVariable("id") ObjectId id) {
-        return authorFacade.findById(id);
+    public BasicResponse<UiAuthor> read(@PathVariable("id") ObjectId id) {
+        BasicResponse<UiAuthor> uiAuthorBasicResponse = new BasicResponse<UiAuthor>(0, "ok", authorFacade.findById(id).getBody());
+        return uiAuthorBasicResponse;
     }
 
     //Aggiungi nuovo autore ricevendo un JSON

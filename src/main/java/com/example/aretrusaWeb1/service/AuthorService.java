@@ -6,7 +6,6 @@ import com.example.aretrusaWeb1.view.UiAuthor;
 import com.example.aretrusaWeb1.view.networkUi.BasicResponse;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
