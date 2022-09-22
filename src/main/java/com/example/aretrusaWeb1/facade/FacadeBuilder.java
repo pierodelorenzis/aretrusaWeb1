@@ -11,4 +11,14 @@ public class FacadeBuilder {
         return new AuthorFacade();
     }
 
+    @Bean
+    public BookcaseFacade provideBookcaseFacade(){
+        return new BookcaseFacade();
+    }
+
+    @Bean
+    public AisleFacade provideAisleFacade(){
+        return new AisleFacade();
+    }
+
 }

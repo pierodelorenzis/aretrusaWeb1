@@ -14,6 +14,10 @@ public class Aisle {
         this.aisle = aisle;
     }
 
+    public Aisle() {
+
+    }
+
     public ObjectId getAisle() {
         return aisle;
     }
