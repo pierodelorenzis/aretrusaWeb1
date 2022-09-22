@@ -17,7 +17,7 @@ public class Borrow {
     private int idCustomer;
     private int idFeedback;
 
-    public Borrow(ObjectId idBorrow, Date startDate, Date endDate, Date startReservation, Date endReservation, int idCustomer, int idFeedback) {
+    public Borrow() {
         this.idBorrow = idBorrow;
         this.startDate = startDate;
         this.endDate = endDate;

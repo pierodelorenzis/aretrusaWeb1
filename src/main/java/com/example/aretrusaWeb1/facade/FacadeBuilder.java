@@ -46,4 +46,10 @@ public class FacadeBuilder {
         return new UserFacade();
     }
 
+    @Bean
+    public BookFacade provideBookFacade() {  return new BookFacade(); }
+
+    @Bean
+    public BorrowFacade provideBorrowFacade() {  return new BorrowFacade(); }
+
 }
