@@ -21,4 +21,29 @@ public class FacadeBuilder {
         return new CustomerFacade();
     }
 
+    @Bean
+    public AisleFacade provideAisleFacade(){
+        return new AisleFacade();
+    }
+
+    @Bean
+    public BookcaseFacade provideBookcaseFacade(){
+        return new BookcaseFacade();
+    }
+
+    @Bean
+    public EditorFacade provideEditorFacade(){
+        return new EditorFacade();
+    }
+
+    @Bean
+    public GenreFacade provideGenreFacade(){
+        return new GenreFacade();
+    }
+
+    @Bean
+    public UserFacade provideUserFacade(){
+        return new UserFacade();
+    }
+
 }
