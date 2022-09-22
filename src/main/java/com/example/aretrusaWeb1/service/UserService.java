@@ -26,19 +26,19 @@ public class UserService {
 
 
 
-    //Trova tutti gli autori
+    //Trova tutti gli user
     public List<User> findAll() {
         return this.userRepository.findAll();
     }
 
-    //Trova gli autori per ID
+    //Trova gli user per ID
     public Optional<User> findById(String cf) {
         Optional<User> foundUser = this.userRepository.findById(cf);
         return foundUser.isEmpty() ? Optional.empty() : foundUser;
     }
 
 
-    //aggiunge un nuovo autore
+    //aggiunge un nuovo user
     public User createUser(String cf, String name, String lastName){
         User toCreate = new User();
         toCreate.setCf(cf.trim());
@@ -52,12 +52,12 @@ public class UserService {
         return toCreate;
     }
 
-    //Elimina un autore
+    //Elimina uno user
     public void deleteById(String cf) {
         userRepository.deleteById(cf);
     }
 
-    //Sostituisce un autore
+    //Modifica uno user
     public User editUser(String cf, User newUser) {
         return userRepository.findById(cf)
                 .map(author -> {

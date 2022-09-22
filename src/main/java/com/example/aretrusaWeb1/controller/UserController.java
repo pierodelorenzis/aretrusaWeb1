@@ -46,7 +46,7 @@ public class UserController {
     }
 
     //Sostituisce User per ID inserito e ricevendo un JSON
-    @PutMapping("/substitute/{cf}")
+    @PutMapping("/edit/{cf}")
     User editUser (@RequestBody User newUser, @PathVariable("cf") String cf) {
         return userFacade.editUser(cf, newUser);
     }

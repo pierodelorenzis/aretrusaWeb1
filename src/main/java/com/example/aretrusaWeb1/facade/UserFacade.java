@@ -24,12 +24,12 @@ public class UserFacade {
     }
 
 
-    //Cerca tutti gli UiAutori
+    //Cerca tutti gli UiUser
     public List<UiUser> findAll() {
         return userService.findAll().stream().map(UiUser::new).collect(Collectors.toList());
     }
 
-    //Trova gli UiAutori per ID
+    //Trova gli UiUser per ID
     public ResponseEntity<UiUser> findById(String cf) {
         final Optional<User> byId = userService.findById(cf);
         if (byId.isPresent()){
@@ -39,17 +39,17 @@ public class UserFacade {
         }
     }
 
-    //aggiunge un nuovo autore
+    //aggiunge un nuovo user
     public ResponseEntity save(User newUser) {
         return ResponseEntity.ok(userService.createUser(newUser.getCf(), newUser.getName(), newUser.getSurname()));
     }
 
-    //Elimina un autore per ID
+    //Elimina uno user per ID
     public void deleteById(String cf) {
         userService.deleteById(cf);
     }
 
-    //Sostituisce un autore
+    //Sostituisce uno user
     public User editUser(String cf, User newUser){
         return userService.editUser(cf, newUser);
     }

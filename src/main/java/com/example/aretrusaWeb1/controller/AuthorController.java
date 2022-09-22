@@ -6,7 +6,6 @@ import com.example.aretrusaWeb1.view.UiAuthor;
 import com.example.aretrusaWeb1.view.networkUi.BasicResponse;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,8 +31,9 @@ public class AuthorController {
 
     //Aggiungi nuovo autore ricevendo un JSON
     @PostMapping({"/newAuthor"})
-    public ResponseEntity<Author> newAuthor (@RequestBody Author newAuthor) {
-        return this.authorFacade.save(newAuthor);
+    public BasicResponse<UiAuthor> newAuthor(@RequestBody Author newAuthor) {
+        BasicResponse<UiAuthor> uiAuthorBasicResponse = new BasicResponse<UiAuthor>(0, "ok", (UiAuthor) authorFacade.save(newAuthor).getBody());
+        return uiAuthorBasicResponse;
     }
 
     //Elimina un autore per ID inserito
@@ -47,10 +47,15 @@ public class AuthorController {
     Author editAuthor (@RequestBody Author newAuthor, @PathVariable ObjectId id) {
         return authorFacade.editAuthor(id, newAuthor);
     }
-    @GetMapping({"/find/{lastname}"})
-    public ResponseEntity<List<UiAuthor>> read(@PathVariable("lastname") String lastname) {
-        return authorFacade.findByLastname(lastname);
+
+
+    @GetMapping({"/get/{lastname}"})
+    public BasicResponse<List<UiAuthor>> read(@PathVariable("lastname") String lastname) {
+        BasicResponse<List<UiAuthor>> uiAuthorBasicResponse = new BasicResponse<List<UiAuthor>>(0, "ok", authorFacade.findByLastname(lastname).getBody());
+        return uiAuthorBasicResponse;
     }
+
+
 
 }
 
