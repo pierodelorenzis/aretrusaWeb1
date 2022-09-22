@@ -10,5 +10,8 @@ public class FacadeBuilder {
     public AuthorFacade provideAuthorFacade(){
         return new AuthorFacade();
     }
-
+    @Bean
+    public EditorFacade provideEditorFacade(){
+        return new EditorFacade();
+    }
 }
