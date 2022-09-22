@@ -1,6 +1,7 @@
 package com.example.aretrusaWeb1.service;
 
 import com.example.aretrusaWeb1.model.Aisle;
+import com.example.aretrusaWeb1.model.Author;
 import com.example.aretrusaWeb1.repository.AisleRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,19 @@ public class AisleService {
     public Optional<Aisle> findById(ObjectId id) {
         Optional<Aisle> foundAisle = this.aisleRepository.findById(id);
         return foundAisle.isEmpty() ? Optional.empty() : foundAisle;
+    }
+
+    public Aisle createAisle(){
+        Aisle toCreate = new Aisle();
+        try {
+            this.aisleRepository.save(toCreate);
+        }catch (Exception e){
+            return null;
+        }
+        return toCreate;
+    }
+
+    public void deleteById(ObjectId id) {
+        aisleRepository.deleteById(id);
     }
 }
