@@ -3,18 +3,18 @@ package com.example.aretrusaWeb1.view;
 import com.example.aretrusaWeb1.model.Feedback;
 
 public class UiFeedback {
-    public int feedback;
+    public int value;
 
 
     public UiFeedback(Feedback feedback) {
-        this.feedback=feedback.getFeedback();
+        this.value=feedback.getValue();
     }
 
     public UiFeedback() {
     }
 
-    public int getFeedback() {
-        return feedback;
+    public int getValue() {
+        return value;
     }
 
 }
