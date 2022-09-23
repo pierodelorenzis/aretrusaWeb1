@@ -23,7 +23,7 @@ public class BorrowService {
     }
 
     //Trova i prestiti per ID
-    public static Optional<Borrow> findById(ObjectId id) {
+    public Optional<Borrow> findById(ObjectId id) {
         Optional<Borrow> foundBorrow = this.borrowRepository.findById(id);
         return foundBorrow.isEmpty() ? Optional.empty() : foundBorrow;
     }

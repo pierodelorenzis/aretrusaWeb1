@@ -1,7 +1,9 @@
 package com.example.aretrusaWeb1.facade;
 
+import com.example.aretrusaWeb1.model.Author;
 import com.example.aretrusaWeb1.model.Borrow;
 import com.example.aretrusaWeb1.service.BorrowService;
+import com.example.aretrusaWeb1.view.UiAuthor;
 import com.example.aretrusaWeb1.view.UiBorrow;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class BorrowFacade {
 
     //Trova gli UiBorrow per ID
     public ResponseEntity<UiBorrow> findById(ObjectId id) {
-        final Optional<Borrow> byId = BorrowService.findById(id);
+        final Optional<Borrow> byId = borrowService.findById(id);
         if (byId.isPresent()){
             return ResponseEntity.ok(new UiBorrow(byId.get()));
         } else {
