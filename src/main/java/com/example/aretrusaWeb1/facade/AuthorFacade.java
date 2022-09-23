@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class AAuthorFacade {
+public class AuthorFacade {
 
     @Autowired
     private AuthorService authorService;
@@ -61,4 +61,3 @@ public class AAuthorFacade {
 
 
 }
-
