@@ -3,10 +3,12 @@ package com.example.aretrusaWeb1.model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 public class Genre {
     @Id
     private ObjectId id;
+    @Indexed(unique = true)
     private String name;
 
     public Genre(String name) {

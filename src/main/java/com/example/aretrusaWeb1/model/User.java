@@ -1,11 +1,8 @@
 package com.example.aretrusaWeb1.model;
 
-
-
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
-
 import java.util.Date;
 
 public class User {
@@ -14,6 +11,7 @@ public class User {
     private ObjectId id;
     @Indexed(unique = true)
     private String email;
+    @Indexed(unique = true)
     private String username;
     private String password;
     @Indexed(unique = true)
@@ -24,6 +22,7 @@ public class User {
     private String sex;
     private String city;
     private String address;
+    @Indexed(unique = true)
     private String telephone;
     private String role;
 
@@ -158,8 +157,3 @@ public class User {
     }
 
 }
-
-
-
-
-
