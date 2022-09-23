@@ -1,11 +1,13 @@
 package com.example.aretrusaWeb1.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 
 public class Book {
 
     @Id
+    private ObjectId idBook;
     @Indexed(unique = true)
     private String isbn;
     private String name;
@@ -14,6 +16,7 @@ public class Book {
     private int year;
     private int idCollection;
     private int page;
+    private String language;
     private int idEditor;
     private int idAuthor;
     private int pegi;
@@ -33,6 +36,7 @@ public class Book {
         this.year = year;
         this.idCollection = idCollection;
         this.page = page;
+        this.language = language;
         this.idEditor = idEditor;
         this.idAuthor = idAuthor;
         this.pegi = pegi;
@@ -43,6 +47,17 @@ public class Book {
         this.idFeeback = idFeeback;
         this.sell = sell;
         this.numBorrow = numBorrow;
+    }
+
+    public Book(Book book) {
+    }
+
+    public ObjectId getIdBook() {
+        return idBook;
+    }
+
+    public void setIdBook(ObjectId idBook) {
+        this.idBook = idBook;
     }
 
     public String getIsbn() {
@@ -99,6 +114,14 @@ public class Book {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public int getIdEditor() {

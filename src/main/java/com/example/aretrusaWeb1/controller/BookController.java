@@ -5,6 +5,7 @@ import com.example.aretrusaWeb1.facade.BookFacade;
 import com.example.aretrusaWeb1.model.Book;
 import com.example.aretrusaWeb1.view.UiBook;
 import com.example.aretrusaWeb1.view.networkUi.BasicResponse;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +26,9 @@ import java.util.List;
         }
 
         //Mostra UiBook per ID inserito
-        @GetMapping({"/find/{isbn}"})
-        public BasicResponse<UiBook> read(@PathVariable("isbn") String isbn) {
-            BasicResponse<UiBook> uiBookBasicResponse = new BasicResponse<UiBook>(0, "ok", bookFacade.findById(isbn).getBody());
+        @GetMapping({"/find/{id}"})
+        public BasicResponse<UiBook> read(@PathVariable("id") ObjectId id) {
+            BasicResponse<UiBook> uiBookBasicResponse = new BasicResponse<UiBook>(0, "ok", bookFacade.findById(id).getBody());
             return uiBookBasicResponse;
         }
 
@@ -38,14 +39,14 @@ import java.util.List;
             return uiBookBasicResponse;
         }
 
-        //Elimina un book per isbn inserito
-        @DeleteMapping("/delete/{isbn}")
-        void deleteBook(@PathVariable String isbn) {bookFacade.deleteById(isbn);
+        //Elimina un book per id inserito
+        @DeleteMapping("/delete/{id}")
+        void deleteBook(@PathVariable ObjectId id) {bookFacade.deleteById(id);
         }
 
-        //modifica un book per isbn inserito ricevendo un JSON
-        @PutMapping("/edit/{isbn}")
-        Book editBook (@RequestBody Book newBook, @PathVariable String isbn) {
-            return bookFacade.editBook(isbn, newBook);
+        //modifica un book per id inserito ricevendo un JSON
+        @PutMapping("/edit/{id}")
+        Book editBook (@RequestBody Book newBook, @PathVariable ObjectId id) {
+            return bookFacade.editBook(id, newBook);
         }
 }

@@ -4,6 +4,7 @@ package com.example.aretrusaWeb1.facade;
 import com.example.aretrusaWeb1.model.Book;
 import com.example.aretrusaWeb1.service.BookService;
 import com.example.aretrusaWeb1.view.UiBook;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
@@ -21,8 +22,8 @@ public class BookFacade {
     }
 
     //Trova i books per ID
-    public ResponseEntity<UiBook> findById(String isbn) {
-        final Optional<Book> byId = bookService.findById(isbn);
+    public ResponseEntity<UiBook> findById(ObjectId id) {
+        final Optional<Book> byId = bookService.findById(id);
         if (byId.isPresent()) {
             return ResponseEntity.ok(new UiBook(byId.get()));
         } else {
@@ -32,16 +33,16 @@ public class BookFacade {
 
     //aggiunge un nuovo book
     public ResponseEntity save(Book newBook) {
-        return ResponseEntity.ok(bookService.createBook(newBook.getName(), newBook.getQuantity(), newBook.getDescription(), newBook.getYear(), newBook.getIdCollection(), newBook.getPage(), newBook.getIdEditor(), newBook.getIdAuthor(), newBook.getPegi(), newBook.getPrice(), newBook.getCurrentPrice(), newBook.getIdBookcase(), newBook.getIdAisle(), newBook.getIdFeeback(), newBook.isSell(), newBook.getNumBorrow()));
+        return ResponseEntity.ok(bookService.createBook(newBook.getName(), newBook.getQuantity(), newBook.getDescription(), newBook.getYear(), newBook.getIdCollection(), newBook.getPage(), newBook.getLanguage(), newBook.getIdEditor(), newBook.getIdAuthor(), newBook.getPegi(), newBook.getPrice(), newBook.getCurrentPrice(), newBook.getIdBookcase(), newBook.getIdAisle(), newBook.getIdFeeback(), newBook.isSell(), newBook.getNumBorrow()));
     }
 
-    //Elimina un book per ISBN
-    public void deleteById(String isbn) {
-        bookService.deleteById(isbn);
+    //Elimina un book per id
+    public void deleteById(ObjectId id) {
+        bookService.deleteById(id);
     }
 
     //Modifica un book
-    public Book editBook(String isbn, Book newBook) {  return bookService.editBook(isbn, newBook);  }
+    public Book editBook(ObjectId id, Book newBook) {  return bookService.editBook(id, newBook);  }
 }
 
 

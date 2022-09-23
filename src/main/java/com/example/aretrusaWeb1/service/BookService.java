@@ -1,13 +1,16 @@
 package com.example.aretrusaWeb1.service;
 
 
+import com.example.aretrusaWeb1.model.Author;
 import com.example.aretrusaWeb1.model.Book;
 import com.example.aretrusaWeb1.repository.BookRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -19,14 +22,19 @@ public class BookService {
         return this.bookRepository.findAll();
     }
 
-    //Trova i book per ISBN
-   public Optional<Book> findById(String isbn) {
-        Optional<Book> foundBook = this.bookRepository.findById(isbn);
+    //Trova i book per id
+   public Optional<Book> findById(ObjectId id) {
+        Optional<Book> foundBook = this.bookRepository.findById(id);
         return foundBook.isEmpty() ? Optional.empty() : foundBook;
     }
 
+    //Trova libro per isbn
+    public List<Book> findByIsbn(String isbn) {
+        return bookRepository.findAll().stream().filter(book -> book.getIsbn().equals(isbn)).map(Book::new).collect(Collectors.toList());
+    }
+
     //aggiunge un nuovo book
-    public Book createBook(String name, int quantity, String description, int year, int idCollection, int page, int idEditor, int idAuthor, int pegi, float price, float currentPrice, int idBookcase, int idAisle, int idFeeback, boolean sell, int numBorrow) {
+    public Book createBook(String name, int quantity, String description, int year, int idCollection, int page, String language, int idEditor, int idAuthor, int pegi, float price, float currentPrice, int idBookcase, int idAisle, int idFeeback, boolean sell, int numBorrow) {
         Book toCreate = new Book();
         toCreate.setName(name.trim());
         toCreate.setQuantity(quantity);
@@ -34,6 +42,7 @@ public class BookService {
         toCreate.setYear(year);
         toCreate.setIdCollection(idCollection);
         toCreate.setPage(page);
+        toCreate.setLanguage(language);
         toCreate.setIdAuthor(idAuthor);
         toCreate.setIdEditor(idEditor);
         toCreate.setPegi(pegi);
@@ -52,12 +61,12 @@ public class BookService {
         return toCreate;
     }
 
-    //Elimina un book per ISBN
-    public void deleteById(String isbn) {  bookRepository.deleteById(isbn); }
+    //Elimina un book per id
+    public void deleteById(ObjectId id) {  bookRepository.deleteById(id); }
 
     //Modifica un book
-    public Book editBook (String isbn, Book newBook) {
-        return bookRepository.findById(isbn)
+    public Book editBook (ObjectId id, Book newBook) {
+        return bookRepository.findById(id)
                 .map(book -> {
                     book.setName(newBook.getName());
                     book.setQuantity(newBook.getQuantity());
@@ -65,6 +74,7 @@ public class BookService {
                     book.setYear(newBook.getYear());
                     book.setIdCollection(newBook.getIdCollection());
                     book.setPage(newBook.getPage());
+                    book.setLanguage(newBook.getLanguage());
                     book.setIdEditor(newBook.getIdEditor());
                     book.setIdAuthor(newBook.getIdAuthor());
                     book.setPegi(newBook.getPegi());
@@ -77,7 +87,7 @@ public class BookService {
                     return bookRepository.save(book);
                 })
                 .orElseGet(() -> {
-                    newBook.setIsbn(isbn);
+                    newBook.setIdBook(id);
                     return bookRepository.save(newBook);
                 });
     }

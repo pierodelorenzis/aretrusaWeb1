@@ -12,6 +12,7 @@ public class UiBook {
     public String description;
     public int year;
     public int page;
+    public String language;
     public int pegi;
     public float price;
     public float currentPrice;
@@ -30,6 +31,7 @@ public class UiBook {
         this.description = book.getDescription();
         this.year = book.getYear();
         this.page = book.getPage();
+        this.language = book.getLanguage();
         this.pegi = book.getPegi();
         this.price = book.getPrice();
         this.currentPrice = book.getCurrentPrice();
@@ -56,6 +58,11 @@ public class UiBook {
     public int getPage() {
         return page;
     }
+
+    public String getLanguage() {
+        return language;
+    }
+
     public int getPegi() {
         return pegi;
     }
