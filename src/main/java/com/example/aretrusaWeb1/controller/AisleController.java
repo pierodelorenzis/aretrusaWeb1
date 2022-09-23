@@ -1,7 +1,10 @@
 package com.example.aretrusaWeb1.controller;
 
 import com.example.aretrusaWeb1.facade.AisleFacade;
+import com.example.aretrusaWeb1.model.Aisle;
+import com.example.aretrusaWeb1.model.Author;
 import com.example.aretrusaWeb1.view.UiAisle;
+import com.example.aretrusaWeb1.view.UiAuthor;
 import com.example.aretrusaWeb1.view.networkUi.BasicResponse;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +31,10 @@ public class AisleController {
         return uiAisleBasicResponse;
     }
 
-    //Aggiungi nuovo autore ricevendo un JSON
+    //Aggiungi nuovo corridoio ricevendo un JSON
     @PostMapping({"/newAisle"})
-    public BasicResponse<UiAisle> newAisle() {
-        BasicResponse<UiAisle> uiAisleBasicResponse = new BasicResponse<UiAisle>(0, "ok", (UiAisle) aisleFacade.save().getBody());
+    public BasicResponse<UiAisle> newAisle(@RequestBody Aisle newAisle) {
+        BasicResponse<UiAisle> uiAisleBasicResponse = new BasicResponse<UiAisle>(0, "ok", (UiAisle) aisleFacade.save(newAisle).getBody());
         return uiAisleBasicResponse;
     }
 

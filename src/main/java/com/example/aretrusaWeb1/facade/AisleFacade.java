@@ -1,11 +1,8 @@
 package com.example.aretrusaWeb1.facade;
 
 import com.example.aretrusaWeb1.model.Aisle;
-import com.example.aretrusaWeb1.model.Author;
 import com.example.aretrusaWeb1.service.AisleService;
-import com.example.aretrusaWeb1.service.AuthorService;
 import com.example.aretrusaWeb1.view.UiAisle;
-import com.example.aretrusaWeb1.view.UiAuthor;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,8 +33,8 @@ public class AisleFacade {
     }
 
     //aggiunge un nuovo corridoio
-    public ResponseEntity save() {
-        return ResponseEntity.ok(aisleService.createAisle());
+    public ResponseEntity save(Aisle newAisle) {
+        return ResponseEntity.ok(aisleService.createAisle(newAisle.getName()));
     }
 
     //Elimina un corridoio per ID
