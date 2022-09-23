@@ -57,11 +57,11 @@ public class Collection {
            this.endYear = endYear;
        }
 
-       public Integer getNumBooks() {
+       public int getNumBooks() {
            return numBooks;
        }
 
-       public void setNumBooks(Integer numBooks) {
+       public void setNumBooks(int numBooks) {
         this.numBooks = numBooks;
     }
 }

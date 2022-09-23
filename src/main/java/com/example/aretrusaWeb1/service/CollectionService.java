@@ -29,7 +29,7 @@ public class CollectionService {
     }
 
     //aggiunge una nuova collezione
-    public Collection createCollection(String name, Date startYear, Date endYear, Integer numBooks){
+    public Collection createCollection(String name, Date startYear, Date endYear, int numBooks){
         Collection toCreate = new Collection();
         toCreate.setName(name.trim());
         toCreate.setStartYear(startYear);

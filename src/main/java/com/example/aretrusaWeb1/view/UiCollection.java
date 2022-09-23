@@ -9,7 +9,7 @@ public class UiCollection {
     public String name;
     public Date startYear;
     public Date endYear;
-    public Integer numBooks;
+    public int numBooks;
 
     public UiCollection(Collection collection) {
         this.name = collection.getName();
@@ -37,7 +37,7 @@ public class UiCollection {
         return endYear;
     }
 
-    public Integer getNumBooks() {
+    public int getNumBooks() {
         return numBooks;
     }
 }
