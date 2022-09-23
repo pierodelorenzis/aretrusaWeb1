@@ -14,7 +14,7 @@ public class Collection {
     private String name;
     private Date startYear;
     private Date endYear;
-    private Integer numBooks;
+    private int numBooks;
 
     public Collection() {
         this.id = id;
