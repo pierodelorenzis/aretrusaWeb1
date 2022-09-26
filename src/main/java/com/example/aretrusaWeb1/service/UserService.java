@@ -1,8 +1,6 @@
 package com.example.aretrusaWeb1.service;
 
-import com.example.aretrusaWeb1.model.Author;
 import com.example.aretrusaWeb1.model.User;
-import com.example.aretrusaWeb1.repository.AuthorRepository;
 import com.example.aretrusaWeb1.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,7 @@ public class UserService {
     public User getFakeUser()
     {
         Date date = new Date(2020-12-20);
-        User fakeUser = new User("email@gmail.com", "user", "password", "jkahkghak23r89", "nome", "cognome", date, "sex", "city", "address", "31251516", "role");
+        User fakeUser = new User("email@gmail.com", "user", "password", "jkahkghak23r89", "nome", "cognome", date, "sex", "city", "address", "31251516", User.Role.Admin);
         return fakeUser;
     }
 
