@@ -24,9 +24,13 @@ public class User {
     private String address;
     @Indexed(unique = true)
     private String telephone;
-    private String role;
+    public enum Role {
+        Admin, Empleyee, Customer
+    }
+    private Role role;
 
-    public User(String email, String username, String password, String cf, String name, String surname, Date birthdate, String sex, String city, String address, String telephone, String role) {
+
+    public User(String email, String username, String password, String cf, String name, String surname, Date birthdate, String sex, String city, String address, String telephone, Role role) {
         this.email = email;
         this.username = username;
         this.password = password;
@@ -148,12 +152,11 @@ public class User {
         this.telephone = telephone;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
-
 }

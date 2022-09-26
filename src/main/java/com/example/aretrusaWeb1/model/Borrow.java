@@ -18,7 +18,7 @@ public class Borrow {
     private int idFeedback;
     public enum StateBorrow {
         pending, inProgress, finished
-    };
+    }
     private StateBorrow stateBorrow;
 
     public Borrow(ObjectId idBorrow, Date startDate, Date endDate, Date startReservation, Date endReservation, int idCustomer, int idFeedback, StateBorrow stateBorrow) {

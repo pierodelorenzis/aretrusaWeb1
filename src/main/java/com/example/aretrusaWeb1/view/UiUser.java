@@ -19,7 +19,7 @@ public class UiUser {
     public String city;
     public String address;
     public String telephone;
-    public String role;
+    public User.Role role;
 
     public UiUser()
     {
@@ -84,7 +84,7 @@ public class UiUser {
         return telephone;
     }
 
-    public String getRole() {
+    public User.Role getRole() {
         return role;
     }
 }
