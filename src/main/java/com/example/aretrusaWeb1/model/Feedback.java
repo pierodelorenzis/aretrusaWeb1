@@ -4,11 +4,24 @@ import org.bson.types.ObjectId;
 
 public class Feedback {
     private ObjectId idFeedback;
-    private int value;
+    public enum Value {
+        VERYGOOD(5),
+        GOOD(4),
+        NOTSOBAD(3),
+        BAD(2),
+        VERYBAD(1);
+
+        private int valueState;
+
+        Value (int valueState) {
+            this.valueState = valueState;
+        }
+    }
+    private Value value;
     private ObjectId idBook;
     private ObjectId idBorrow;
 
-    public Feedback(ObjectId idFeedback, int value, ObjectId idBook, ObjectId idBorrow) {
+    public Feedback(ObjectId idFeedback, Value value, ObjectId idBook, ObjectId idBorrow) {
         this.idFeedback = idFeedback;
         this.value = value;
         this.idBook = idBook;
@@ -23,7 +36,7 @@ public class Feedback {
         return idFeedback;
     }
 
-    public int getValue() {
+    public Value getValue() {
         return value;
     }
 
@@ -39,7 +52,7 @@ public class Feedback {
         this.idFeedback = idFeedback;
     }
 
-    public void setValue(int value) {
+    public void setValue(Value value) {
         this.value = value;
     }
 

@@ -1,10 +1,7 @@
 package com.example.aretrusaWeb1.facade;
 
-import com.example.aretrusaWeb1.model.Author;
 import com.example.aretrusaWeb1.model.Feedback;
-import com.example.aretrusaWeb1.service.AuthorService;
 import com.example.aretrusaWeb1.service.FeedbackService;
-import com.example.aretrusaWeb1.view.UiAuthor;
 import com.example.aretrusaWeb1.view.UiFeedback;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;

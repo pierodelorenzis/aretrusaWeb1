@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class FeedbackService {
@@ -29,7 +28,7 @@ public class FeedbackService {
 
 
     //aggiunge un nuovo feedback
-    public Feedback createFeedback(int value, ObjectId idBook, ObjectId idBorrow){
+    public Feedback createFeedback(Feedback.Value value, ObjectId idBook, ObjectId idBorrow){
         Feedback toCreate = new Feedback();
         toCreate.setValue(value);
         toCreate.setIdBook(idBook);
