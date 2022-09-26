@@ -52,4 +52,7 @@ public class FacadeBuilder {
     @Bean
     public BorrowFacade provideBorrowFacade() {  return new BorrowFacade(); }
 
+    @Bean
+    public FeedbackFacade provideFeedbackFacade() {  return new FeedbackFacade(); }
+
 }

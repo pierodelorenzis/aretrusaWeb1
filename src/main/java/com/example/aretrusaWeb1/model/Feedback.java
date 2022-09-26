@@ -5,14 +5,18 @@ import org.bson.types.ObjectId;
 public class Feedback {
     private ObjectId idFeedback;
     private int value;
-    private int idBook;
+    private ObjectId idBook;
     private ObjectId idBorrow;
 
-    public Feedback(ObjectId idFeedback, int value, int idBook, ObjectId idBorrow) {
+    public Feedback(ObjectId idFeedback, int value, ObjectId idBook, ObjectId idBorrow) {
         this.idFeedback = idFeedback;
         this.value = value;
         this.idBook = idBook;
         this.idBorrow = idBorrow;
+    }
+
+    public Feedback() {
+
     }
 
     public ObjectId getIdFeedback() {
@@ -23,7 +27,7 @@ public class Feedback {
         return value;
     }
 
-    public int getIdBook() {
+    public ObjectId getIdBook() {
         return idBook;
     }
 
@@ -39,7 +43,7 @@ public class Feedback {
         this.value = value;
     }
 
-    public void setIdBook(int idBook) {
+    public void setIdBook(ObjectId idBook) {
         this.idBook = idBook;
     }
 
