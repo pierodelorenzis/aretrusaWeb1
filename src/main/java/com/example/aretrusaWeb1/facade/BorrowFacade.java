@@ -35,7 +35,7 @@ public class BorrowFacade {
 
     //aggiunge un nuovo borrow
     public ResponseEntity save(Borrow newBorrow) {
-        return ResponseEntity.ok(borrowService.createBorrow(newBorrow.getStartDate(), newBorrow.getEndDate(), newBorrow.getStartReservation(), newBorrow.getEndReservation(), newBorrow.getIdCustomer(), newBorrow.getIdFeedback()));
+        return ResponseEntity.ok(borrowService.createBorrow(newBorrow.getStartDate(), newBorrow.getEndDate(), newBorrow.getStartReservation(), newBorrow.getEndReservation(), newBorrow.getIdCustomer(), newBorrow.getIdFeedback(), newBorrow.getStateBorrow()));
     }
 
     //Elimina un borrow per ID

@@ -29,7 +29,7 @@ public class BorrowService {
     }
 
     //aggiunge un nuovo borrow
-    public Borrow createBorrow(Date startDate, Date endDate, Date startReservation, Date endReservation, int idCustomer, int idFeedback) {
+    public Borrow createBorrow(Date startDate, Date endDate, Date startReservation, Date endReservation, int idCustomer, int idFeedback, Borrow.StateBorrow stateBorrow) {
         Borrow toCreate = new Borrow();
         toCreate.setStartDate(startDate);
         toCreate.setEndDate(endDate);
@@ -37,6 +37,7 @@ public class BorrowService {
         toCreate.setEndReservation(endReservation);
         toCreate.setIdCustomer(idCustomer);
         toCreate.setIdFeedback(idFeedback);
+        toCreate.setStateBorrow(stateBorrow);
         try {
             this.borrowRepository.save(toCreate);
         }catch (Exception e){
@@ -60,7 +61,7 @@ public class BorrowService {
                     borrow.setEndReservation(newBorrow.getEndReservation());
                     borrow.setIdCustomer(newBorrow.getIdCustomer());
                     borrow.setIdFeedback(newBorrow.getIdFeedback());
-
+                    borrow.setStateBorrow(newBorrow.getStateBorrow());
                     return borrowRepository.save(borrow);
                 })
                 .orElseGet(() -> {

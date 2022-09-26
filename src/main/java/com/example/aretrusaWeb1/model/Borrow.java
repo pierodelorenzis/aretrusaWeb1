@@ -16,8 +16,12 @@ public class Borrow {
     private Date endReservation;
     private int idCustomer;
     private int idFeedback;
+    public enum StateBorrow {
+        pending, inProgress, finished
+    };
+    private StateBorrow stateBorrow;
 
-    public Borrow() {
+    public Borrow(ObjectId idBorrow, Date startDate, Date endDate, Date startReservation, Date endReservation, int idCustomer, int idFeedback, StateBorrow stateBorrow) {
         this.idBorrow = idBorrow;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -25,6 +29,10 @@ public class Borrow {
         this.endReservation = endReservation;
         this.idCustomer = idCustomer;
         this.idFeedback = idFeedback;
+        this.stateBorrow = stateBorrow;
+    }
+
+    public Borrow() {
     }
 
     public ObjectId getIdBorrow() {
@@ -81,5 +89,14 @@ public class Borrow {
 
     public void setIdFeedback(int idFeedback) {
         this.idFeedback = idFeedback;
+    }
+
+
+    public StateBorrow getStateBorrow() {
+        return stateBorrow;
+    }
+
+    public void setStateBorrow(StateBorrow stateBorrow) {
+        this.stateBorrow = stateBorrow;
     }
 }
