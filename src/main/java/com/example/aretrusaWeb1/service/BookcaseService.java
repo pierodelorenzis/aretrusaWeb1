@@ -29,9 +29,10 @@ public class BookcaseService {
          return foundBookCase.isEmpty() ? Optional.empty() : foundBookCase;
     }
 
-    public BookCase createBookcase(ObjectId IdAisle){
+    public BookCase createBookcase(ObjectId IdAisle, int number){
         BookCase toCreate = new BookCase();
         toCreate.setIdAisle(IdAisle);
+        toCreate.setNumber(number);
         try {
             this.bookcaseRepository.save(toCreate);
         }catch (Exception e){

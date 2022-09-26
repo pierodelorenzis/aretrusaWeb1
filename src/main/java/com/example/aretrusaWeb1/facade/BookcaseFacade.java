@@ -37,7 +37,7 @@ public class BookcaseFacade {
 
     //aggiunge un nuovo bookcase
     public ResponseEntity save(BookCase newBookcase) {
-        return ResponseEntity.ok(bookcaseService.createBookcase(newBookcase.getIdAisle()));
+        return ResponseEntity.ok(bookcaseService.createBookcase(newBookcase.getIdAisle(), newBookcase.getNumber()));
     }
 
     //Elimina un bookcase per ID

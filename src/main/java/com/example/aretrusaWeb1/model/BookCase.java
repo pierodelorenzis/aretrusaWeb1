@@ -10,10 +10,13 @@ public class BookCase {
 
     @Id
     private ObjectId bookcase;
+
+    private int number;
     private ObjectId idAisle;
 
-    public BookCase(ObjectId idAisle) {
+    public BookCase(ObjectId idAisle, int number) {
         this.idAisle = idAisle;
+        this.number = number;
     }
 
     public BookCase() {
@@ -33,5 +36,13 @@ public class BookCase {
 
     public void setIdAisle(ObjectId idAisle) {
         this.idAisle = idAisle;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }
