@@ -5,20 +5,20 @@ import org.bson.types.ObjectId;
 
 public class UiAisle {
 
-    public ObjectId aisle;
+    public ObjectId idAisle;
     public String name;
 
 
     public UiAisle(Aisle aisle) {
-        this.aisle = aisle.getAisle();
+        this.idAisle = aisle.getIdAisle();
         this.name = aisle.getName();
     }
 
     public UiAisle() {
     }
 
-    public ObjectId getAisle() {
-        return aisle;
+    public ObjectId getIdAisle() {
+        return idAisle;
     }
     public String getName(){ return  name; }
 

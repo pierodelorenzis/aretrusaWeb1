@@ -8,7 +8,7 @@ public class UiBookCase {
     public ObjectId bookcase;
 
     public UiBookCase(BookCase bookCase) {
-        this.bookcase = bookCase.getBookcase();
+        this.bookcase = bookCase.getIdBookcase();
     }
 
     public UiBookCase() {

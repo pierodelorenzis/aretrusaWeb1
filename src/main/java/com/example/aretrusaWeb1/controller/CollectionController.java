@@ -27,8 +27,8 @@ public class CollectionController {
 
     //Mostra UiCollection per ID inserito
     @GetMapping({"/find/{id}"})
-    public BasicResponse<UiCollection> read(@PathVariable("id") ObjectId id) {
-        BasicResponse<UiCollection> uiCollectionBasicResponse = new BasicResponse<UiCollection>(0, "ok", collectionFacade.findById(id).getBody());
+    public BasicResponse<UiCollection> read(@PathVariable("id") ObjectId idCollection) {
+        BasicResponse<UiCollection> uiCollectionBasicResponse = new BasicResponse<UiCollection>(0, "ok", collectionFacade.findById(idCollection).getBody());
         return uiCollectionBasicResponse;
     }
 
@@ -41,13 +41,13 @@ public class CollectionController {
 
     //Elimina una collezione per ID inserito
     @DeleteMapping("/delete/{id}")
-    void deleteCollection(@PathVariable ObjectId id) {
-        collectionFacade.deleteById(id);
+    void deleteCollection(@PathVariable ObjectId idCollection) {
+        collectionFacade.deleteById(idCollection);
     }
 
     //Modifica Collection per ID inserito e ricevendo un JSON
     @PutMapping("/edit/{id}")
-    Collection editCollection (@RequestBody Collection newCollection, @PathVariable ObjectId id) {
-        return collectionFacade.editCollection(id, newCollection);
+    Collection editCollection (@RequestBody Collection newCollection, @PathVariable ObjectId idCollection) {
+        return collectionFacade.editCollection(idCollection, newCollection);
     }
 }

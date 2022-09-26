@@ -1,10 +1,7 @@
 package com.example.aretrusaWeb1.controller;
 
-import com.example.aretrusaWeb1.facade.AuthorFacade;
 import com.example.aretrusaWeb1.facade.CustomerFacade;
-import com.example.aretrusaWeb1.model.Author;
 import com.example.aretrusaWeb1.model.Customer;
-import com.example.aretrusaWeb1.view.UiAuthor;
 import com.example.aretrusaWeb1.view.UiCustomer;
 import com.example.aretrusaWeb1.view.networkUi.BasicResponse;
 import org.bson.types.ObjectId;
@@ -28,8 +25,8 @@ public class CustomerController {
 
     //Mostra UiAutore per ID inserito
     @GetMapping({"/find/{id}"})
-    public BasicResponse<UiCustomer> read(@PathVariable("id") ObjectId id) {
-        BasicResponse<UiCustomer> uiCustomerBasicResponse = new BasicResponse<UiCustomer>(0, "ok", customerFacade.findById(id).getBody());
+    public BasicResponse<UiCustomer> read(@PathVariable("id") ObjectId idUser) {
+        BasicResponse<UiCustomer> uiCustomerBasicResponse = new BasicResponse<UiCustomer>(0, "ok", customerFacade.findById(idUser).getBody());
         return uiCustomerBasicResponse;
     }
 
@@ -42,14 +39,14 @@ public class CustomerController {
 
     //Elimina un cliente per ID inserito
     @DeleteMapping("/delete/{id}")
-    void deleteCustomer(@PathVariable ObjectId id) {
-        customerFacade.deleteById(id);
+    void deleteCustomer(@PathVariable ObjectId idUser) {
+        customerFacade.deleteById(idUser);
     }
 
     //Sostituisce Cliente per ID inserito e ricevendo un JSON
     @PutMapping("/edit/{id}")
-    Customer editCustomer (@RequestBody Customer newCustomer, @PathVariable ObjectId id) {
-        return customerFacade.editCustomer(id, newCustomer);
+    Customer editCustomer (@RequestBody Customer newCustomer, @PathVariable ObjectId idUser) {
+        return customerFacade.editCustomer(idUser, newCustomer);
     }
 
 

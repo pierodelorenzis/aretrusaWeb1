@@ -24,8 +24,8 @@ public class GenreService {
     }
 
     //Trova i Generi per ID
-    public Optional<Genre> findById(ObjectId id) {
-        Optional<Genre> foundGenre = this.genreRepository.findById(id);
+    public Optional<Genre> findById(ObjectId idGenre) {
+        Optional<Genre> foundGenre = this.genreRepository.findById(idGenre);
         return foundGenre.isEmpty() ? Optional.empty() : foundGenre;
     }
 
@@ -43,19 +43,19 @@ public class GenreService {
     }
 
     //Elimina un Genere
-    public void deleteById(ObjectId id) {
-        genreRepository.deleteById(id);
+    public void deleteById(ObjectId idGenre) {
+        genreRepository.deleteById(idGenre);
     }
 
     //Modifica un genere
-    public Genre editGenre(ObjectId id, Genre newGenre) {
-        return genreRepository.findById(id)
+    public Genre editGenre(ObjectId idGenre, Genre newGenre) {
+        return genreRepository.findById(idGenre)
                 .map(genre -> {
                     genre.setName(newGenre.getName());
                     return genreRepository.save(genre);
                 })
                 .orElseGet(() -> {
-                    newGenre.setId(id);
+                    newGenre.setId(idGenre);
                     return genreRepository.save(newGenre);
                 });
     }

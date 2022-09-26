@@ -23,8 +23,8 @@ public class CollectionFacade {
     }
 
     //Trova le UiCollection per ID
-    public ResponseEntity<UiCollection> findById(ObjectId id) {
-        final Optional<Collection> byId = collectionService.findById(id);
+    public ResponseEntity<UiCollection> findById(ObjectId idCollection) {
+        final Optional<Collection> byId = collectionService.findById(idCollection);
         if (byId.isPresent()){
             return ResponseEntity.ok(new UiCollection(byId.get()));
         } else {
@@ -38,13 +38,13 @@ public class CollectionFacade {
     }
 
     //Elimina una collezione per ID
-    public void deleteById(ObjectId id) {
-        collectionService.deleteById(id);
+    public void deleteById(ObjectId idCollection) {
+        collectionService.deleteById(idCollection);
     }
 
     //Modifica una collezione
-    public Collection editCollection(ObjectId id, Collection newCollection){
-        return collectionService.editCollection(id, newCollection);
+    public Collection editCollection(ObjectId idCollection, Collection newCollection){
+        return collectionService.editCollection(idCollection, newCollection);
     }
 
 

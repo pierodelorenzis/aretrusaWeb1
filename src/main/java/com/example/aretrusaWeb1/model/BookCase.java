@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class BookCase {
 
     @Id
-    private ObjectId bookcase;
+    private ObjectId idBookcase;
 
     private int number;
     private ObjectId idAisle;
@@ -22,16 +22,16 @@ public class BookCase {
     public BookCase() {
     }
 
-    public ObjectId getBookcase() {
-        return bookcase;
+    public ObjectId getIdBookcase() {
+        return idBookcase;
     }
 
     public ObjectId getIdAisle() {
         return idAisle;
     }
 
-    public void setBookcase(ObjectId bookcase) {
-        this.bookcase = bookcase;
+    public void setIdBookcase(ObjectId idBookcase) {
+        this.idBookcase = idBookcase;
     }
 
     public void setIdAisle(ObjectId idAisle) {

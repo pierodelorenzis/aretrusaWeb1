@@ -23,8 +23,8 @@ public class CollectionService {
     }
 
     //Trova le collezioni per ID
-    public Optional<Collection> findById(ObjectId id) {
-        Optional<Collection> foundCollection = this.collectionRepository.findById(id);
+    public Optional<Collection> findById(ObjectId idCollection) {
+        Optional<Collection> foundCollection = this.collectionRepository.findById(idCollection);
         return foundCollection.isEmpty() ? Optional.empty() : foundCollection;
     }
 
@@ -44,13 +44,13 @@ public class CollectionService {
     }
 
     //Elimina una collezione
-    public void deleteById(ObjectId id) {
-        collectionRepository.deleteById(id);
+    public void deleteById(ObjectId idCollection) {
+        collectionRepository.deleteById(idCollection);
     }
 
     //Modifica una collezione
-    public Collection editCollection(ObjectId id, Collection newCollection) {
-        return collectionRepository.findById(id)
+    public Collection editCollection(ObjectId idCollection, Collection newCollection) {
+        return collectionRepository.findById(idCollection)
                 .map(collection -> {
                     collection.setName(newCollection.getName());
                     collection.setEndYear(newCollection.getStartYear());
@@ -59,7 +59,7 @@ public class CollectionService {
                     return collectionRepository.save(collection);
                 })
                 .orElseGet(() -> {
-                    newCollection.setId(id);
+                    newCollection.setIdCollection(idCollection);
                     return collectionRepository.save(newCollection);
                 });
     }

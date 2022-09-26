@@ -24,8 +24,8 @@ public class BookcaseController {
 
     //Mostra UiBookcase per ID inserito
     @GetMapping({"/find/{id}"})
-    public BasicResponse<UiBookCase> read(@PathVariable("id") ObjectId id) {
-        BasicResponse<UiBookCase> uiBookcaseBasicResponse = new BasicResponse<UiBookCase>(0, "ok", bookcaseFacade.findById(id).getBody());
+    public BasicResponse<UiBookCase> read(@PathVariable("id") ObjectId idBookcase) {
+        BasicResponse<UiBookCase> uiBookcaseBasicResponse = new BasicResponse<UiBookCase>(0, "ok", bookcaseFacade.findById(idBookcase).getBody());
         return uiBookcaseBasicResponse;
     }
 
@@ -38,14 +38,14 @@ public class BookcaseController {
 
     //Elimina un bookcase per ID inserito
     @DeleteMapping("/delete/{id}")
-    void deleteBookcase(@PathVariable ObjectId id) {
-        bookcaseFacade.deleteById(id);
+    void deleteBookcase(@PathVariable ObjectId idBookcase) {
+        bookcaseFacade.deleteById(idBookcase);
     }
 
     //Modifica Bookcase per ID inserito e ricevendo un JSON
     @PutMapping("/edit/{id}")
-    BookCase editBookcase (@RequestBody BookCase newBookcase, @PathVariable ObjectId id) {
-        return bookcaseFacade.editBookcase(id, newBookcase);
+    BookCase editBookcase (@RequestBody BookCase newBookcase, @PathVariable ObjectId idBookcase) {
+        return bookcaseFacade.editBookcase(idBookcase, newBookcase);
     }
 
 }

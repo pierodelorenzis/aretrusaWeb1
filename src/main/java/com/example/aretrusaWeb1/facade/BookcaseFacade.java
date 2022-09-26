@@ -26,8 +26,8 @@ public class BookcaseFacade {
     }
 
     //Trova gli UiBookcase per ID
-    public ResponseEntity<UiBookCase> findById(ObjectId id) {
-        final Optional<BookCase> byId = bookcaseService.findById(id);
+    public ResponseEntity<UiBookCase> findById(ObjectId idBookcase) {
+        final Optional<BookCase> byId = bookcaseService.findById(idBookcase);
         if (byId.isPresent()){
             return ResponseEntity.ok(new UiBookCase(byId.get()));
         } else {
@@ -41,13 +41,13 @@ public class BookcaseFacade {
     }
 
     //Elimina un bookcase per ID
-    public void deleteById(ObjectId id) {
-        bookcaseService.deleteById(id);
+    public void deleteById(ObjectId idBookcase) {
+        bookcaseService.deleteById(idBookcase);
     }
 
     //Modifica un bookcase
-    public BookCase editBookcase(ObjectId id, BookCase newBookcase){
-        return bookcaseService.editBookcase(id, newBookcase);
+    public BookCase editBookcase(ObjectId idBookcase, BookCase newBookcase){
+        return bookcaseService.editBookcase(idBookcase, newBookcase);
     }
 
 }

@@ -34,7 +34,7 @@ public class BookService {
     }
 
     //aggiunge un nuovo book
-    public Book createBook(String name, int quantity, String description, int year, int idCollection, int page, String language, int idEditor, int idAuthor, int pegi, float price, float currentPrice, int idBookcase, int idAisle, int idFeeback, boolean sell, int numBorrow) {
+    public Book createBook(String name, int quantity, String description, int year, ObjectId idCollection, int page, String language, ObjectId idEditor, ObjectId idAuthor, int pegi, float price, float currentPrice, ObjectId idBookcase, ObjectId idAisle, ObjectId idFeeback, boolean sell, int numBorrow) {
         Book toCreate = new Book();
         toCreate.setName(name.trim());
         toCreate.setQuantity(quantity);

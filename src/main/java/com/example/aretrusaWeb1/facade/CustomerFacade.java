@@ -23,8 +23,8 @@ public class CustomerFacade {
     }
 
     //Trova gli UiCustomer per ID
-    public ResponseEntity<UiCustomer> findById(ObjectId id) {
-        final Optional<Customer> byId = customerService.findById(id);
+    public ResponseEntity<UiCustomer> findById(ObjectId idUser) {
+        final Optional<Customer> byId = customerService.findById(idUser);
         if (byId.isPresent()){
             return ResponseEntity.ok(new UiCustomer(byId.get()));
         } else {
@@ -38,13 +38,13 @@ public class CustomerFacade {
     }
 
     //Elimina un cliente per ID
-    public void deleteById(ObjectId id) {
-        customerService.deleteById(id);
+    public void deleteById(ObjectId idUser) {
+        customerService.deleteById(idUser);
     }
 
     //Modifica un cliente
-    public Customer editCustomer(ObjectId id, Customer newCustomer){
-        return customerService.editCustomer(id, newCustomer);
+    public Customer editCustomer(ObjectId idUser, Customer newCustomer){
+        return customerService.editCustomer(idUser, newCustomer);
     }
 
 

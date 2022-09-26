@@ -24,8 +24,8 @@ public class BookcaseService {
 
 
     //Trova i BookCase per ID
-    public Optional<BookCase> findById(ObjectId id) {
-        Optional<BookCase> foundBookCase = this.bookcaseRepository.findById(id);
+    public Optional<BookCase> findById(ObjectId idBookcase) {
+        Optional<BookCase> foundBookCase = this.bookcaseRepository.findById(idBookcase);
          return foundBookCase.isEmpty() ? Optional.empty() : foundBookCase;
     }
 
@@ -41,20 +41,20 @@ public class BookcaseService {
         return toCreate;
     }
 
-    public BookCase editBookcase(ObjectId id, BookCase newBookcase) {
-        return bookcaseRepository.findById(id)
+    public BookCase editBookcase(ObjectId idBookcase, BookCase newBookcase) {
+        return bookcaseRepository.findById(idBookcase)
                 .map(bookCase -> {
                     bookCase.setIdAisle(newBookcase.getIdAisle());
                     return bookcaseRepository.save(bookCase);
                 })
                 .orElseGet(() -> {
-                    newBookcase.setBookcase(id);
+                    newBookcase.setIdBookcase(idBookcase);
                     return bookcaseRepository.save(newBookcase);
                 });
     }
 
-    public void deleteById(ObjectId id) {
-        bookcaseRepository.deleteById(id);
+    public void deleteById(ObjectId idBookcase) {
+        bookcaseRepository.deleteById(idBookcase);
     }
 
 }

@@ -30,16 +30,16 @@ public class UserService {
     }
 
     //Trova gli user per ID
-    public Optional<User> findById(ObjectId id) {
-        Optional<User> foundUser = this.userRepository.findById(id);
+    public Optional<User> findById(ObjectId idUser) {
+        Optional<User> foundUser = this.userRepository.findById(idUser);
         return foundUser.isEmpty() ? Optional.empty() : foundUser;
     }
 
 
     //aggiunge un nuovo user
-    public User createUser(ObjectId id, String name, String lastName){
+    public User createUser(ObjectId idUser, String name, String lastName){
         User toCreate = new User();
-        toCreate.setId(id);
+        toCreate.setIdUser(idUser);
         toCreate.setName(name.trim());
         toCreate.setSurname(lastName.trim());
         try {
@@ -51,20 +51,20 @@ public class UserService {
     }
 
     //Elimina uno user
-    public void deleteById(ObjectId id) {
-        userRepository.deleteById(id);
+    public void deleteById(ObjectId idUser) {
+        userRepository.deleteById(idUser);
     }
 
     //Modifica uno user
-    public User editUser(ObjectId id, User newUser) {
-        return userRepository.findById(id)
+    public User editUser(ObjectId idUser, User newUser) {
+        return userRepository.findById(idUser)
                 .map(author -> {
                     author.setName(newUser.getName());
                     author.setSurname(newUser.getSurname());
                     return userRepository.save(author);
                 })
                 .orElseGet(() -> {
-                    newUser.setId(id);
+                    newUser.setIdUser(idUser);
                     return userRepository.save(newUser);
                 });
     }

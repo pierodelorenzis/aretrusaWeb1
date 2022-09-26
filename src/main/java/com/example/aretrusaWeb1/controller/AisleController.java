@@ -26,8 +26,8 @@ public class AisleController {
 
     //Mostra UiAisle per ID inserito
     @GetMapping({"/find/{id}"})
-    public BasicResponse<UiAisle> read(@PathVariable("id") ObjectId id) {
-        BasicResponse<UiAisle> uiAisleBasicResponse = new BasicResponse<UiAisle>(0, "ok", aisleFacade.findById(id).getBody());
+    public BasicResponse<UiAisle> read(@PathVariable("id") ObjectId idAisle) {
+        BasicResponse<UiAisle> uiAisleBasicResponse = new BasicResponse<UiAisle>(0, "ok", aisleFacade.findById(idAisle).getBody());
         return uiAisleBasicResponse;
     }
 
@@ -40,8 +40,8 @@ public class AisleController {
 
     //Elimina un corridoio per ID inserito
     @DeleteMapping("/delete/{id}")
-    void deleteAisle(@PathVariable ObjectId id) {
-        aisleFacade.deleteById(id);
+    void deleteAisle(@PathVariable ObjectId idAisle) {
+        aisleFacade.deleteById(idAisle);
     }
 
 }

@@ -23,8 +23,8 @@ public class CustomerService {
     }
 
     //Trova i clienti per ID
-    public Optional<Customer> findById(ObjectId id) {
-        Optional<Customer> foundCustomer = this.customerRepository.findById(id);
+    public Optional<Customer> findById(ObjectId idUser) {
+        Optional<Customer> foundCustomer = this.customerRepository.findById(idUser);
         return foundCustomer.isEmpty() ? Optional.empty() : foundCustomer;
     }
 
@@ -56,13 +56,13 @@ public class CustomerService {
     }
 
     //Elimina un cliente
-    public void deleteById(ObjectId id) {
-        customerRepository.deleteById(id);
+    public void deleteById(ObjectId idUser) {
+        customerRepository.deleteById(idUser);
     }
 
     //Modifica un cliente
-    public Customer editCustomer(ObjectId id, Customer newCustomer) {
-        return customerRepository.findById(id)
+    public Customer editCustomer(ObjectId idUser, Customer newCustomer) {
+        return customerRepository.findById(idUser)
                 .map(customer -> {
                     customer.setName(newCustomer.getName());
                     customer.setSurname(newCustomer.getSurname());
@@ -82,7 +82,7 @@ public class CustomerService {
                     return customerRepository.save(customer);
                 })
                 .orElseGet(() -> {
-                    newCustomer.setId(id);
+                    newCustomer.setIdUser(idUser);
                     return customerRepository.save(newCustomer);
                 });
     }

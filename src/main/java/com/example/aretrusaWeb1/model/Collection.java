@@ -10,14 +10,14 @@ import java.util.Date;
 public class Collection {
 
     @Id
-    private ObjectId id;
+    private ObjectId idCollection;
     private String name;
     private Date startYear;
     private Date endYear;
     private int numBooks;
 
     public Collection() {
-        this.id = id;
+        this.idCollection = idCollection;
         this.name = name;
         this.startYear = startYear;
         this.endYear = endYear;
@@ -25,12 +25,12 @@ public class Collection {
     }
 
 
-       public ObjectId getId() {
-           return id;
+       public ObjectId getIdCollection() {
+           return idCollection;
        }
 
-       public void setId(ObjectId id) {
-           this.id = id;
+       public void setIdCollection(ObjectId idCollection) {
+           this.idCollection = idCollection;
        }
 
        public String getName() {

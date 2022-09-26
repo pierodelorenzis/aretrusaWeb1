@@ -31,8 +31,8 @@ public class UserFacade {
     }
 
     //Trova gli UiUser per ID
-    public ResponseEntity<UiUser> findById(ObjectId id) {
-        final Optional<User> byId = userService.findById(id);
+    public ResponseEntity<UiUser> findById(ObjectId idUser) {
+        final Optional<User> byId = userService.findById(idUser);
         if (byId.isPresent()){
             return ResponseEntity.ok(new UiUser(byId.get()));
         } else {
@@ -42,16 +42,16 @@ public class UserFacade {
 
     //aggiunge un nuovo user
     public ResponseEntity save(User newUser) {
-        return ResponseEntity.ok(userService.createUser(newUser.getId(), newUser.getName(), newUser.getSurname()));
+        return ResponseEntity.ok(userService.createUser(newUser.getIdUser(), newUser.getName(), newUser.getSurname()));
     }
 
     //Elimina uno user per ID
-    public void deleteById(ObjectId id) {
-        userService.deleteById(id);
+    public void deleteById(ObjectId idUser) {
+        userService.deleteById(idUser);
     }
 
     //Sostituisce uno user
-    public User editUser(ObjectId id, User newUser){
-        return userService.editUser(id, newUser);
+    public User editUser(ObjectId idUser, User newUser){
+        return userService.editUser(idUser, newUser);
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 public class Aisle {
 
     @Id
-    private ObjectId aisle;
+    private ObjectId idAisle;
     @Indexed
     private String name;
 
@@ -21,12 +21,12 @@ public class Aisle {
 
     }
 
-    public ObjectId getAisle() {
-        return aisle;
+    public ObjectId getIdAisle() {
+        return idAisle;
     }
 
-    public void setAisle(ObjectId aisle) {
-        this.aisle = aisle;
+    public void setIdAisle(ObjectId idAisle) {
+        this.idAisle = idAisle;
     }
 
     public String getName() {

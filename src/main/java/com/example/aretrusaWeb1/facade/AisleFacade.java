@@ -23,8 +23,8 @@ public class AisleFacade {
     }
 
     //Trova gli UiAisle per ID
-    public ResponseEntity<UiAisle> findById(ObjectId id) {
-        final Optional<Aisle> byId = aisleService.findById(id);
+    public ResponseEntity<UiAisle> findById(ObjectId idAisle) {
+        final Optional<Aisle> byId = aisleService.findById(idAisle);
         if (byId.isPresent()){
             return ResponseEntity.ok(new UiAisle(byId.get()));
         } else {
@@ -38,8 +38,8 @@ public class AisleFacade {
     }
 
     //Elimina un corridoio per ID
-    public void deleteById(ObjectId id) {
-        aisleService.deleteById(id);
+    public void deleteById(ObjectId idAisle) {
+        aisleService.deleteById(idAisle);
     }
 
 }

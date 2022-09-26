@@ -22,8 +22,8 @@ public class GenreFacade {
     }
 
     //Trova gli UiGeneri per ID
-    public ResponseEntity<UIGenre> findById(ObjectId id) {
-        final Optional<Genre> byId = genreService.findById(id);
+    public ResponseEntity<UIGenre> findById(ObjectId idGenre) {
+        final Optional<Genre> byId = genreService.findById(idGenre);
         if (byId.isPresent()){
             return ResponseEntity.ok(new UIGenre(byId.get()));
         } else {
@@ -37,13 +37,13 @@ public class GenreFacade {
     }
 
     //Elimina un genre per ID
-    public void deleteById(ObjectId id) {
-        genreService.deleteById(id);
+    public void deleteById(ObjectId idGenre) {
+        genreService.deleteById(idGenre);
     }
 
     //Sostituisce un autore
-    public Genre editGenre(ObjectId id, Genre newGenre){
-        return genreService.editGenre(id, newGenre);
+    public Genre editGenre(ObjectId idGenre, Genre newGenre){
+        return genreService.editGenre(idGenre, newGenre);
     }
 }
 

@@ -8,7 +8,7 @@ import java.util.Date;
 public class User {
 
     @Id
-    private ObjectId id;
+    private ObjectId idUser;
     @Indexed(unique = true)
     private String email;
     @Indexed(unique = true)
@@ -56,12 +56,12 @@ public class User {
         this.surname = surname;
     }
 
-    public ObjectId getId() {
-        return id;
+    public ObjectId getIdUser() {
+        return idUser;
     }
 
-    public void setId(ObjectId id) {
-        this.id = id;
+    public void setIdUser(ObjectId id) {
+        this.idUser = idUser;
     }
 
     public String getEmail() {

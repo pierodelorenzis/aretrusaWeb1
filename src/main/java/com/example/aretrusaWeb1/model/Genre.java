@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 
 public class Genre {
     @Id
-    private ObjectId id;
+    private ObjectId idGenre;
     @Indexed(unique = true)
     private String name;
 
@@ -19,12 +19,12 @@ public class Genre {
 
     }
 
-    public ObjectId getId() {
-        return id;
+    public ObjectId getIdGenre() {
+        return idGenre;
     }
 
-    public void setId(ObjectId id) {
-        this.id = id;
+    public void setId(ObjectId idGenre) {
+        this.idGenre = idGenre;
     }
 
     public String getName() {

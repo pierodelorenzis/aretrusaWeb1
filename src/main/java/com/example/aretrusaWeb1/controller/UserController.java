@@ -33,8 +33,8 @@ public class UserController {
 
     //Mostra UiUser per ID inserito
     @GetMapping({"/find/{id}"})
-    public BasicResponse<UiUser> read(@PathVariable("id") ObjectId id) {
-        BasicResponse<UiUser> uiUserBasicResponse = new BasicResponse<UiUser>(0, "ok", userFacade.findById(id).getBody());
+    public BasicResponse<UiUser> read(@PathVariable("id") ObjectId idUser) {
+        BasicResponse<UiUser> uiUserBasicResponse = new BasicResponse<UiUser>(0, "ok", userFacade.findById(idUser).getBody());
         return uiUserBasicResponse;
     }
 
@@ -47,14 +47,14 @@ public class UserController {
 
     //Elimina uno user per ID inserito
     @DeleteMapping("/delete/{id}")
-    void deleteUser(@PathVariable("id") ObjectId id) {
-        userFacade.deleteById(id);
+    void deleteUser(@PathVariable("id") ObjectId idUser) {
+        userFacade.deleteById(idUser);
     }
 
     //Sostituisce User per ID inserito e ricevendo un JSON
     @PutMapping("/edit/{id}")
-    User editUser (@RequestBody User newUser, @PathVariable("id") ObjectId id) {
-        return userFacade.editUser(id, newUser);
+    User editUser (@RequestBody User newUser, @PathVariable("id") ObjectId idUser) {
+        return userFacade.editUser(idUser, newUser);
     }
 
 }

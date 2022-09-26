@@ -21,8 +21,8 @@ public class AisleService {
     }
 
     //Trova gli autori per ID
-    public Optional<Aisle> findById(ObjectId id) {
-        Optional<Aisle> foundAisle = this.aisleRepository.findById(id);
+    public Optional<Aisle> findById(ObjectId idAisle) {
+        Optional<Aisle> foundAisle = this.aisleRepository.findById(idAisle);
         return foundAisle.isEmpty() ? Optional.empty() : foundAisle;
     }
 
@@ -37,7 +37,7 @@ public class AisleService {
         return toCreate;
     }
 
-    public void deleteById(ObjectId id) {
-        aisleRepository.deleteById(id);
+    public void deleteById(ObjectId idAisle) {
+        aisleRepository.deleteById(idAisle);
     }
 }

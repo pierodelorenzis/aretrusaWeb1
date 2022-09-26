@@ -25,8 +25,8 @@ public class GenreController {
 
     //Mostra UiGenre per ID inserito
     @GetMapping({"/find/{id}"})
-    public BasicResponse<UIGenre> read(@PathVariable("id") ObjectId id) {
-        BasicResponse<UIGenre> uiGenreBasicResponse = new BasicResponse<UIGenre>(0, "ok", genreFacade.findById(id).getBody());
+    public BasicResponse<UIGenre> read(@PathVariable("id") ObjectId idGenre) {
+        BasicResponse<UIGenre> uiGenreBasicResponse = new BasicResponse<UIGenre>(0, "ok", genreFacade.findById(idGenre).getBody());
         return uiGenreBasicResponse;
     }
 
@@ -39,13 +39,13 @@ public class GenreController {
 
     //Elimina un genere per ID inserito
     @DeleteMapping("/delete/{id}")
-    void deleteGenre(@PathVariable ObjectId id) {genreFacade.deleteById(id);
+    void deleteGenre(@PathVariable ObjectId idGenre) {genreFacade.deleteById(idGenre);
     }
 
     //Sostituisce Genere per ID inserito e ricevendo un JSON
     @PutMapping("/edit/{id}")
-    Genre editGenre (@RequestBody Genre newGenre, @PathVariable ObjectId id) {
-        return genreFacade.editGenre(id,newGenre);
+    Genre editGenre (@RequestBody Genre newGenre, @PathVariable ObjectId idGenre) {
+        return genreFacade.editGenre(idGenre,newGenre);
     }
 
 }

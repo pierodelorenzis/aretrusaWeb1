@@ -14,17 +14,17 @@ public class Book {
     private int quantity;
     private String description;
     private int year;
-    private int idCollection;
+    private ObjectId idCollection;
     private int page;
     private String language;
-    private int idEditor;
-    private int idAuthor;
+    private ObjectId idEditor;
+    private ObjectId idAuthor;
     private int pegi;
     private float price;
     private float currentPrice;
-    private int idBookcase;
-    private int idAisle;
-    private int idFeeback;
+    private ObjectId idBookcase;
+    private ObjectId idAisle;
+    private ObjectId idFeeback;
     private boolean sell;
     private int numBorrow;
 
@@ -100,11 +100,11 @@ public class Book {
         this.year = year;
     }
 
-    public int getIdCollection() {
+    public ObjectId getIdCollection() {
         return idCollection;
     }
 
-    public void setIdCollection(int idCollection) {
+    public void setIdCollection(ObjectId idCollection) {
         this.idCollection = idCollection;
     }
 
@@ -124,19 +124,19 @@ public class Book {
         this.language = language;
     }
 
-    public int getIdEditor() {
+    public ObjectId getIdEditor() {
         return idEditor;
     }
 
-    public void setIdEditor(int idEditor) {
+    public void setIdEditor(ObjectId idEditor) {
         this.idEditor = idEditor;
     }
 
-    public int getIdAuthor() {
+    public ObjectId getIdAuthor() {
         return idAuthor;
     }
 
-    public void setIdAuthor(int idAuthor) {
+    public void setIdAuthor(ObjectId idAuthor) {
         this.idAuthor = idAuthor;
     }
 
@@ -164,27 +164,27 @@ public class Book {
         this.currentPrice = currentPrice;
     }
 
-    public int getIdBookcase() {
+    public ObjectId getIdBookcase() {
         return idBookcase;
     }
 
-    public void setIdBookcase(int idBookcase) {
+    public void setIdBookcase(ObjectId idBookcase) {
         this.idBookcase = idBookcase;
     }
 
-    public int getIdAisle() {
+    public ObjectId getIdAisle() {
         return idAisle;
     }
 
-    public void setIdAisle(int idAisle) {
+    public void setIdAisle(ObjectId idAisle) {
         this.idAisle = idAisle;
     }
 
-    public int getIdFeeback() {
+    public ObjectId getIdFeeback() {
         return idFeeback;
     }
 
-    public void setIdFeeback(int idFeeback) {
+    public void setIdFeeback(ObjectId idFeeback) {
         this.idFeeback = idFeeback;
     }
 
@@ -203,6 +203,4 @@ public class Book {
     public void setNumBorrow(int numBorrow) {
         this.numBorrow = numBorrow;
     }
-
-
 }
