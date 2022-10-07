@@ -2,9 +2,11 @@ package com.example.aretusaWeb1.model;
 
 
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 
 public class Editor {
 
+    @Id
     private ObjectId idEditor;
     private String name;
     private String city;

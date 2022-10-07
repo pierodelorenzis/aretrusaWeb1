@@ -1,8 +1,10 @@
 package com.example.aretusaWeb1.model;
 
 
+import com.example.aretusaWeb1.view.UiAuthor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -21,6 +23,12 @@ public class Author {
     }
 
     public Author(Author author) {
+    }
+
+    public UiAuthor toUiAuthor()
+    {
+        UiAuthor uiAuthor = new UiAuthor(this.getName(), this.getLastName());
+        return uiAuthor;
     }
 
     public ObjectId getIdAuthor() {

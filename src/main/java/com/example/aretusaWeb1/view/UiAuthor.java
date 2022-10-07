@@ -13,8 +13,19 @@ public class UiAuthor {
         this.lastName = author.getLastName();
     }
 
+    public UiAuthor(String name, String lastName) {
+        this.name = name;
+        this.lastName = lastName;
+    }
+
     public UiAuthor(){
 
+    }
+
+    public Author toAuthor(UiAuthor uiAuthor)
+    {
+        Author author = new Author(uiAuthor.name, uiAuthor.getLastName());
+        return author;
     }
 
     public String getName() {

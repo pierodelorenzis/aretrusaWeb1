@@ -31,9 +31,8 @@ public class AuthorController {
 
     //Aggiungi nuovo autore ricevendo un JSON
     @PostMapping({"/newAuthor"})
-    public BasicResponse<UiAuthor> newAuthor(@RequestBody Author newAuthor) {
-        BasicResponse<UiAuthor> uiAuthorBasicResponse = new BasicResponse<UiAuthor>(0, "ok", (UiAuthor) authorFacade.save(newAuthor).getBody());
-        return uiAuthorBasicResponse;
+    public BasicResponse<UiAuthor> newAuthor(@RequestBody UiAuthor newAuthor) throws Exception {
+        return authorFacade.save(newAuthor);
     }
 
     //Elimina un autore per ID inserito
@@ -51,8 +50,7 @@ public class AuthorController {
 
     @GetMapping({"/get/{lastname}"})
     public BasicResponse<List<UiAuthor>> read(@PathVariable("lastname") String lastname) {
-        BasicResponse<List<UiAuthor>> uiAuthorBasicResponse = new BasicResponse<List<UiAuthor>>(0, "ok", authorFacade.findByLastname(lastname).getBody());
-        return uiAuthorBasicResponse;
+        return authorFacade.getAuthourWithLastname(lastname);
     }
 
 

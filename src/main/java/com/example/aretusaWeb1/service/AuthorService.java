@@ -1,9 +1,15 @@
 package com.example.aretusaWeb1.service;
 
+import com.example.aretusaWeb1.aretusaWebApplication;
 import com.example.aretusaWeb1.model.Author;
 import com.example.aretusaWeb1.repository.AuthorRepository;
+import com.example.aretusaWeb1.view.UiAuthor;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +19,10 @@ import java.util.stream.Collectors;
 @Service
 public class AuthorService {
 
-    @Autowired
+    public AuthorService() {
+        this.authorRepository = aretusaWebApplication.getContext().getBean(AuthorRepository.class);
+    }
+
     private AuthorRepository authorRepository;
 
     //Trova tutti gli autori
@@ -29,16 +38,23 @@ public class AuthorService {
 
 
     //aggiunge un nuovo autore
-    public Author createAuthor(String name, String lastName){
+    public ServiceResult<UiAuthor> createAuthor(String name, String lastName) throws Exception {
         Author toCreate = new Author();
-        toCreate.setName(name.trim());
-        toCreate.setLastName(lastName.trim());
+        if (name==null || lastName== null)
+            throw new Exception("Mandatory field empty");
+        List<Author> authors = findByNameAndLastname(name, lastName);
+        if (!authors.isEmpty())
+            throw new Exception("Entity already exist");
+
+
+        toCreate.setName(name);
+        toCreate.setLastName(lastName);
         try {
-            this.authorRepository.save(toCreate);
+            UiAuthor savedUiAuthor = this.authorRepository.save(toCreate).toUiAuthor();
+            return new ServiceResult(null, savedUiAuthor);
         }catch (Exception e){
-            return null;
+            return new ServiceResult(List.of(e.getMessage()), null);
         }
-        return toCreate;
     }
 
     //Elimina un autore
@@ -62,8 +78,14 @@ public class AuthorService {
 
 
     public List<Author> findByLastname(String lastname) {
-        return authorRepository.findAll().stream().filter(author -> author.getLastName().equals(lastname)).map(Author::new).collect(Collectors.toList());
+        return authorRepository.findBylastName(lastname);
     }
+
+    public List<Author> findByNameAndLastname(String name, String lastname) {
+        return authorRepository.findBynameAndlastName(name, lastname);
+    }
+
+
 
 
 
